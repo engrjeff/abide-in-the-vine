@@ -11,6 +11,7 @@ import { transformPostResponse } from "@utils/helpers";
 import SectionContainer from "@components/SectionContainer";
 import Tag from "@components/Tag";
 import SectionTitle from "@components/SectionTitle";
+import { API_URL } from "@utils/constants";
 
 interface IUrlQueryParams extends ParsedUrlQuery {
   slug: string;
@@ -62,7 +63,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch("http://localhost:1337/api/posts");
+  const response = await fetch(`${API_URL}/api/posts`);
   const posts: CMSPostResponse = await response.json();
 
   const paths = posts.data.map((post) => ({
@@ -75,12 +76,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IUrlQueryParams;
   const response = await fetch(
-    `http://localhost:1337/api/posts?filters[slug][$eq]=${slug}&populate=tags,banner`
+    `${API_URL}/api/posts?filters[slug][$eq]=${slug}&populate=tags,banner`
   );
   const jsonDoc: CMSPostResponse = await response.json();
 
   const allPostsResponse = await fetch(
-    "http://localhost:1337/api/posts?populate=tags,banner&sort=createdAt:desc"
+    `${API_URL}/api/posts?populate=tags,banner&sort=createdAt:desc`
   );
   const allJsonDoc: CMSPostResponse = await allPostsResponse.json();
 

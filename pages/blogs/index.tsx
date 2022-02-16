@@ -10,6 +10,7 @@ import { transformPostResponse, transformTagResponse } from "@utils/helpers";
 import Article from "@components/Article";
 import AppTabs from "@components/AppTabs";
 import AllPosts from "@components/AllPosts";
+import { API_URL } from "@utils/constants";
 
 interface BlogsPageProps {
   posts: Post[];
@@ -49,13 +50,11 @@ const BlogsPage: NextPage<BlogsPageProps> = (props) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
-    "http://localhost:1337/api/posts?populate=tags,banner&sort=createdAt:desc"
+    `${API_URL}/api/posts?populate=tags,banner&sort=createdAt:desc`
   );
   const jsonDoc: CMSPostResponse = await response.json();
 
-  const tagResponse = await fetch(
-    "http://localhost:1337/api/tags?sort=createdAt:asc"
-  );
+  const tagResponse = await fetch(`${API_URL}/api/tags?sort=createdAt:asc`);
 
   const tagsJsonDoc: CMSTagResponse = await tagResponse.json();
 

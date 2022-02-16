@@ -9,6 +9,7 @@ import MessageUs from "@components/sections/MessageUs";
 import OtherLinks from "@components/sections/OtherLinks";
 import { CMSPostResponse, Post } from "@utils/types";
 import { transformPostResponse } from "@utils/helpers";
+import { API_URL } from "@utils/constants";
 
 interface HomeProps {
   posts: Post[];
@@ -30,7 +31,7 @@ const Home: NextPage<HomeProps> = (props) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
-    "http://localhost:1337/api/posts?populate=tags,banner&sort=createdAt:desc"
+    `${API_URL}/api/posts?populate=tags,banner&sort=createdAt:desc`
   );
   const jsonDoc: CMSPostResponse = await response.json();
 
