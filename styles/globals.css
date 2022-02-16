@@ -1,16 +1,111 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components {
+  body {
+    @apply selection:bg-abide-accent selection:text-white font-main scroll-smooth;
+  }
+  .btn {
+    transition: transform 200ms ease-in;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 
-* {
-  box-sizing: border-box;
+  .btn:hover {
+    transform: translateY(-4px);
+  }
+
+  .btn-cta {
+    @apply btn drop-shadow-lg rounded-full py-4 px-9 bg-abide-main text-white font-semibold tracking-wider uppercase active:drop-shadow-md;
+  }
+
+  .app-btn {
+    @apply cursor-pointer rounded-sm shadow-md flex items-center gap-2  bg-abide-main text-white font-bold tracking-wide uppercase border border-transparent duration-200 transition hover:bg-white hover:text-abide-main hover:border-abide-main active:shadow-sm;
+  }
+
+  .app-btn.large {
+    @apply py-3 px-8 text-lg;
+  }
+
+  .app-btn.medium {
+    @apply py-2 px-6 text-base;
+  }
+
+  .app-btn.small {
+    @apply py-2 px-5 text-[13px];
+  }
+
+  .nav-link {
+    @apply text-abide-dark font-extrabold text-[13px] uppercase tracking-widest duration-200 transition-colors hover:text-abide-main;
+  }
+
+  .nav-link:not(.nav-active) {
+    @apply hover:text-abide-main;
+  }
+
+  .nav-active {
+    @apply text-abide-main;
+  }
+
+  .app-fieldset {
+    @apply bg-abide-light flex flex-col py-4 px-6 rounded-sm ring-offset-4 ring-abide-accent/60 transition hover:ring-4;
+  }
+
+  .app-fieldset > label {
+    @apply font-bold text-sm text-abide-gray uppercase tracking-wider mb-2;
+  }
+
+  .app-fieldset > input {
+    @apply bg-transparent py-3 outline-none text-abide-dark;
+  }
+
+  .app-fieldset > textarea {
+    @apply bg-transparent py-3 outline-none text-abide-dark min-h-[200px];
+  }
+
+  .postcard {
+    @apply shadow-lg;
+
+    transition: transform 200ms ease-in;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateY(8px);
+  }
+
+  .postcard:hover {
+    transform: translateY(0);
+  }
+
+  .text-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .btn-tab {
+    @apply flex items-center justify-center px-6 py-3 uppercase text-abide-dark font-extrabold tracking-wide border-b-2 border-transparent hover:bg-abide-light duration-150 transition;
+  }
+
+  .btn-tab.active {
+    @apply border-abide-accent;
+  }
+
+  .filter-label {
+    @apply text-abide-gray uppercase font-bold tracking-wide text-sm;
+  }
+
+  .filter-tag {
+    @apply bg-abide-light px-5 py-2 font-semibold text-abide-gray rounded-full duration-200 transition ring-abide-light ring-offset-4 hover:ring-4;
+  }
+
+  .filter-tag.active {
+    @apply bg-abide-main ring-abide-main/80 text-white hover:ring-abide-main/80;
+  }
+
+  .mobile-icon {
+    @apply text-abide-dark absolute top-0 right-0 h-[70px] w-[70px] flex items-center justify-center cursor-pointer lg:hidden;
+  }
 }
