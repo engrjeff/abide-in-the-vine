@@ -32,6 +32,11 @@ const AllPosts = (props: AllPostsProps) => {
     );
   }
 
+  const resetFilters = () => {
+    setTagFilters([]);
+    setSearch("");
+  };
+
   const sortDirection = selectedFilter === "Most Recent" ? "desc" : "asc";
   const sortedPosts = _.orderBy(
     filteredPosts,
@@ -41,7 +46,7 @@ const AllPosts = (props: AllPostsProps) => {
 
   return (
     <div>
-      <div className='flex items-center'>
+      <div className='flex items-center mb-6'>
         <BlogsStatAndTimeFilter
           selectedFilter={selectedFilter}
           onChange={setSelectedFilter}
@@ -59,9 +64,14 @@ const AllPosts = (props: AllPostsProps) => {
         {sortedPosts.length > 0 ? (
           sortedPosts.map((post: any) => <PostCard key={post.id} post={post} />)
         ) : (
-          <p className='text-center text-abide-gray font-bold text-lg flex justify-center col-span-3'>
-            No results found with the given filter.
-          </p>
+          <div className='flex flex-col items-center col-span-3 gap-y-6'>
+            <p className='text-center text-abide-gray font-bold text-lg'>
+              No results found with the given filter.
+            </p>
+            <AppButton size='medium' onClick={resetFilters}>
+              Clear Filter
+            </AppButton>
+          </div>
         )}
       </div>
       {posts.length >= limit && sortedPosts.length > 0 && (

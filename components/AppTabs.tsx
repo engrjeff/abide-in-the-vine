@@ -15,7 +15,7 @@ const AppTabs = (props: AppTabsProps) => {
     classnames("btn-tab", { active: current === tabName });
 
   return (
-    <div className='flex items-center justify-center border-b border-abide-light'>
+    <div className='flex items-center justify-center md:justify-start border-b border-abide-light'>
       <button
         className={getClass("latest-post")}
         onClick={() => onChange("latest-post")}
