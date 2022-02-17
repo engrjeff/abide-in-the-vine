@@ -36,7 +36,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
           <Link href={`/blogs/${nextPost.slug}`}>
             <a className='flex flex-col-reverse md:flex-row gap-x-4 border border-abide-light postcard'>
               <div className='p-6 flex flex-col'>
-                <div className='abide-article'>
+                <div className='font-article space-y-4 max-w-[500px]'>
                   <h5 className='text-abide-dark text-2xl font-extrabold'>
                     {nextPost.title}
                   </h5>
