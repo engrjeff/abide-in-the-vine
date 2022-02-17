@@ -14,7 +14,7 @@ class MyDocument extends Document {
   }
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
           <meta name='msapplication-TileColor' content='#da532c' />
           <meta

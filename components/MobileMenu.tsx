@@ -20,11 +20,15 @@ const MobileMenu = () => {
   );
   return (
     <>
-      <button className='mobile-icon' onClick={toggleMenu}>
+      <button className='mobile-icon' onClick={toggleMenu} aria-label='menu'>
         <MenuAlt3Icon className='h-8 w-8' />
       </button>
       <div className={menuClasses}>
-        <button className='mobile-icon' onClick={toggleMenu}>
+        <button
+          className='mobile-icon'
+          onClick={toggleMenu}
+          aria-label='close menu'
+        >
           <XIcon className='h-8 w-8' />
         </button>
         <ul className='flex flex-col gap-y-3 py-16' onClick={toggleMenu}>
