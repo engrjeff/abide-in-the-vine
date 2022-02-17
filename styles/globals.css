@@ -110,7 +110,7 @@
   }
 
   .abide-article {
-    @apply text-abide-dark flex flex-col col-span-7 prose prose-lg font-article prose-p:text-justify prose-blockquote:border-abide-accent prose-blockquote:bg-abide-lighter prose-blockquote:py-1 prose-blockquote:pr-1;
+    @apply text-abide-dark flex flex-col col-span-7 prose prose-lg font-article prose-p:text-justify prose-blockquote:border-abide-accent prose-blockquote:bg-abide-lighter prose-blockquote:py-1 md:prose-blockquote:px-2 prose-blockquote:px-1;
   }
 
   blockquote > p {
