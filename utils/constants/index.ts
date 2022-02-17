@@ -20,4 +20,6 @@ export const abide = {
   medium: "https://ecejhefgrace.medium.com",
   instagram: "https://www.instagram.com/abidingthevine",
   youtube: "https://www.youtube.com/channel/UCOFSY_HxuFlVsIslH5NuNVQ/featured",
+  keywords:
+    "abide, Christ, gospel, grace, joy, satisfaction, faith, Christianity",
 };

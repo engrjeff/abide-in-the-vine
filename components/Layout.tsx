@@ -19,13 +19,16 @@ const Layout = (props: LayoutProps) => {
   const OGImg = meta ? meta.banner.url : abide.bannerUrl;
   const OGImgAlt = meta ? meta.title : "Abide in the Vine";
   const OGDesc = meta ? meta.description : abide.desc;
+  const appDesc = meta
+    ? meta.tags.map((t) => t.name).join(", ")
+    : abide.keywords;
   return (
     <>
       <Head>
         <title>{title ? title : "Abide in the Vine"}</title>
         <meta property='fb:app_id' content={abide.fbAppId} />
         <meta property='og:site_name' content={OGImgAlt} />
-        <meta property='description' content={OGDesc} />
+        <meta property='description' content={appDesc} />
         <meta property='og:url' content={OGUrl} />
         <meta property='og:title' content={OGTitle} />
         <meta property='og:description' content={OGDesc} />
