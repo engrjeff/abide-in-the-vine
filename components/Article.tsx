@@ -26,8 +26,6 @@ const Article = (props: ArticleProps) => {
   const banner = post.banner.formats.medium || post.banner;
   const timeToRead = readingTime(post.content).text;
 
-  const goToArticle = () => router.push(`/blogs/${post.slug}`);
-
   return (
     <article className='abide-article'>
       <div>
@@ -49,6 +47,7 @@ const Article = (props: ArticleProps) => {
         alt={post.title}
         width={banner.width}
         height={banner.height}
+        className='aspect-video'
       />
       <ReactMarkdown className={contentClass}>{post.content}</ReactMarkdown>
       {clamped && (

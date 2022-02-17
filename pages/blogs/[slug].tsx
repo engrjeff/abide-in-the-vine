@@ -25,7 +25,7 @@ interface BlogPostProps {
 const BlogPost: NextPage<BlogPostProps> = (props) => {
   const { post, nextPost } = props;
 
-  const nextBanner = nextPost.banner.formats.medium || nextPost.banner;
+  const nextBanner = nextPost.banner.formats.small || nextPost.banner;
 
   return (
     <Layout title={post.title} articleMetaData={post}>
@@ -55,6 +55,8 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
                 alt={nextPost.title}
                 width={nextBanner.width}
                 height={nextBanner.height}
+                placeholder='blur'
+                blurDataURL={nextBanner.url}
               />
             </a>
           </Link>
