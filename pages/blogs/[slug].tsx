@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
+import qs from "qs";
 
 import Layout from "@components/Layout";
 import Article from "@components/Article";
@@ -79,20 +80,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IUrlQueryParams;
-  const response = await fetch(
-    `${API_URL}/api/posts?filters[slug][$eq]=${slug}&populate=tags,banner`
+
+  const postQuery = qs.stringify(
+    {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: ["tags", "banner"],
+    },
+    { encodeValuesOnly: true }
   );
+
+  const allPostsQuery = qs.stringify(
+    { populate: ["tags", "banner"], sort: ["createdAt:desc"] },
+    { encodeValuesOnly: true }
+  );
+
+  const response = await fetch(`${API_URL}/api/posts?${postQuery}`);
   const jsonDoc: CMSPostResponse = await response.json();
 
-  const allPostsResponse = await fetch(
-    `${API_URL}/api/posts?populate=tags,banner&sort=createdAt:desc`
-  );
+  const allPostsResponse = await fetch(`${API_URL}/api/posts?${allPostsQuery}`);
   const allJsonDoc: CMSPostResponse = await allPostsResponse.json();
 
   const posts = transformPostResponse(jsonDoc);
   const allPosts = transformPostResponse(allJsonDoc);
 
-  const nextPost = posts[0].id === allPosts[0].id ? allPosts[1] : allPosts[0];
+  const currentPostIndex = allPosts.findIndex((p) => p.id === posts[0].id);
+  const nextIndex =
+    currentPostIndex < allPosts.length - 1 ? currentPostIndex + 1 : 0;
+  const nextPost = allPosts[nextIndex];
 
   return {
     props: {
