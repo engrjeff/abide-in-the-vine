@@ -29,8 +29,6 @@ const BlogsPage: NextPage<BlogsPageProps> = (props) => {
 
   const latestPost = posts[0];
 
-  console.log(relatedPosts);
-
   return (
     <Layout title='Blogs - Abide in the Vine'>
       <SectionContainer className='my-24 md:my-32'>

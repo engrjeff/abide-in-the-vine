@@ -10,7 +10,7 @@ const MobileMenu = () => {
   const toggleMenu = () => setOpen((val) => !val);
 
   const menuClasses = classnames(
-    "fixed bg-white inset-0 overflow-hidden transition-transform duration-200",
+    "z-30 fixed bg-white inset-0 overflow-hidden transition-transform duration-200",
     {
       "translate-x-full": !open,
     },
