@@ -29,20 +29,22 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
 
   return (
     <Layout title={post.title} articleMetaData={post}>
-      <SectionContainer className='my-32 flex flex-col items-center'>
+      <SectionContainer className='my-24 md:my-32 flex flex-col items-center'>
         <Article post={post} />
         <div className='space-y-4 border-t border-abide-light mt-14 pt-6 max-w-[80ch]'>
           <SectionTitle title='Next Post' />
           <Link href={`/blogs/${nextPost.slug}`}>
-            <a className='flex flex-col md:flex-row gap-x-4 border border-abide-light postcard'>
-              <div className='p-4 flex flex-col gap-y-4 order-2 md:order-1'>
-                <h5 className='text-abide-dark text-2xl font-extrabold'>
-                  {nextPost.title}
-                </h5>
-                <p className='text-abide-gray text-justify'>
-                  {nextPost.description}
-                </p>
-                <div className='flex gap-2 flex-wrap'>
+            <a className='flex flex-col-reverse md:flex-row gap-x-4 border border-abide-light postcard'>
+              <div className='p-6 flex flex-col'>
+                <div className='abide-article'>
+                  <h5 className='text-abide-dark text-2xl font-extrabold'>
+                    {nextPost.title}
+                  </h5>
+                  <p className='text-abide-gray text-justify'>
+                    {nextPost.description}
+                  </p>
+                </div>
+                <div className='flex gap-2 flex-wrap mt-5'>
                   {nextPost.tags.map((tag) => (
                     <Tag key={tag.id} label={tag.name} />
                   ))}

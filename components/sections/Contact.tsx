@@ -9,25 +9,26 @@ import {
   MediumIcon,
   YoutubeIcon,
 } from "@components/Icon";
+import { abide } from "@utils/constants";
 
 const socialLinkItems = [
   {
-    path: "facebook.com",
+    path: abide.facebook,
     label: "Abide in the Vine - Facebook",
     Icon: <FacebookIcon />,
   },
   {
-    path: "instagram.com",
+    path: abide.instagram,
     label: "Abide in the Vine - Instagram",
     Icon: <InstagramIcon />,
   },
   {
-    path: "medium.com",
+    path: abide.medium,
     label: "Abide in the Vine - Medium",
     Icon: <MediumIcon />,
   },
   {
-    path: "youtube.com",
+    path: abide.youtube,
     label: "Abide in the Vine - YouTube",
     Icon: <YoutubeIcon />,
   },
@@ -45,8 +46,9 @@ const Contact = () => {
             <a
               key={item.label}
               href={item.path}
+              aria-label={item.label}
               target='_blank'
-              rel='noreferrer'
+              rel='noopener noreferrer'
               className='text-abide-gray duration-200 transition-colors hover:text-abide-dark'
             >
               {item.Icon}

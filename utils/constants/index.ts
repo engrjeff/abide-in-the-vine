@@ -16,4 +16,8 @@ export const abide = {
   publisher: "https://www.facebook.com/abidingthevine",
   author: "https://www.facebook.com/jhefecegrace",
   fbAppId: "624015951991940",
+  facebook: "https://www.facebook.com/abidingthevine",
+  medium: "https://ecejhefgrace.medium.com",
+  instagram: "https://www.instagram.com/abidingthevine",
+  youtube: "https://www.youtube.com/channel/UCOFSY_HxuFlVsIslH5NuNVQ/featured",
 };

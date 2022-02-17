@@ -16,14 +16,12 @@ const PostCard = (props: PostCardProps) => {
   return (
     <Link href={`/blogs/${post.slug}`}>
       <a className='postcard flex flex-col'>
-        <div>
-          <Image
-            src={banner.url}
-            alt={post.title}
-            width={banner.width}
-            height={300}
-          />
-        </div>
+        <Image
+          src={banner.url}
+          alt={post.title}
+          width={banner.width}
+          height={300}
+        />
         <div className='py-4 px-6 space-y-2 font-article'>
           <h6 className='text-abide-dark text-2xl font-extrabold'>
             {post.title}
@@ -31,16 +29,18 @@ const PostCard = (props: PostCardProps) => {
           <span className='uppercase tracking-[2px] text-xs text-abide-gray'>
             {formatDate(post.createdAt)}
           </span>
-          <p className='text-abide-gray line-clamp-4'>{post.description}</p>
+          <p className='text-abide-gray line-clamp-3'>{post.description}</p>
         </div>
         <div className='px-6 pb-6 space-y-2 mt-auto'>
           <span className='uppercase tracking-[2px] text-xs text-abide-gray'>
             Tags
           </span>
           <div className='flex flex-wrap gap-1'>
-            {post.tags.map((tag) => (
-              <Tag key={tag.id} label={tag.name} />
-            ))}
+            {post.tags
+              .sort((a, b) => a.name.length - b.name.length)
+              .map((tag) => (
+                <Tag key={tag.id} label={tag.name} />
+              ))}
           </div>
         </div>
       </a>

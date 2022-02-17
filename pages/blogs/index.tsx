@@ -24,15 +24,15 @@ const BlogsPage: NextPage<BlogsPageProps> = (props) => {
   const latestPost = posts[0];
 
   return (
-    <Layout title='Abide in the Vine | Blogs'>
-      <SectionContainer className='my-32'>
+    <Layout title='Blogs - Abide in the Vine'>
+      <SectionContainer className='my-24 md:my-32'>
         <div className='flex items-center'>
           <h1 className='text-4xl font-extrabold text-abide-dark'>Blogs</h1>
         </div>
         <div className='space-y-4 mt-8'>
           <AppTabs current={currentTab} onChange={setCurrentTab} />
           {currentTab === "latest-post" && (
-            <div className='grid md:grid-cols-10 pt-4'>
+            <div className='grid md:grid-cols-10 md:pt-4'>
               <Article post={latestPost} clamped />
             </div>
           )}

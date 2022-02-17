@@ -8,6 +8,7 @@ import { Post } from "@utils/types";
 import { formatDate } from "@utils/helpers";
 import AppButton from "./AppButton";
 import { useRouter } from "next/router";
+import CTAButton from "./CTAButton";
 
 interface ArticleProps {
   post: Post;
@@ -30,7 +31,7 @@ const Article = (props: ArticleProps) => {
   return (
     <article className='abide-article'>
       <div>
-        <h4 className='text-3xl font-extrabold text-abide-dark'>
+        <h4 className='text-3xl font-extrabold text-abide-dark mt-2'>
           {post.title}
         </h4>
         <div className='flex items-center mt-1'>
@@ -52,9 +53,11 @@ const Article = (props: ArticleProps) => {
       <ReactMarkdown className={contentClass}>{post.content}</ReactMarkdown>
       {clamped && (
         <div className='mt-8 not-prose font-main'>
-          <AppButton size='medium' onClick={goToArticle}>
-            Continue Reading
-          </AppButton>
+          <CTAButton
+            isLink
+            href={`/blogs/${post.slug}`}
+            text='Continue Reading'
+          />
         </div>
       )}
     </article>

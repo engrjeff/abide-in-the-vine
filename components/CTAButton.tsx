@@ -18,12 +18,14 @@ const CTAButton = (props: CTAButtonProps) => {
   if (isLink && href)
     return (
       <Link href={href}>
-        <a className={classes}>{text}</a>
+        <a className={classes} aria-label={text}>
+          {text}
+        </a>
       </Link>
     );
 
   return (
-    <button className={classes}>
+    <button className={classes} aria-label={text}>
       <span>{text}</span>
     </button>
   );

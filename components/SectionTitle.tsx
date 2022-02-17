@@ -13,8 +13,8 @@ const SectionTitle = (props: SectionTitleProps) => {
       <Image
         src={AbideBullet}
         alt='Abide in the Vine - bullet'
-        width={32}
-        height={32}
+        width={24}
+        height={24}
       />
       <h4 className='font-bold text-abide-dark text-[26px]'>{props.title}</h4>
     </div>
