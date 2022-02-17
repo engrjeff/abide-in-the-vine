@@ -3,6 +3,7 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Post } from "@utils/types";
+import { bannerUrl } from "@utils/constants";
 
 interface LayoutProps {
   title?: string;
@@ -15,7 +16,7 @@ const Layout = (props: LayoutProps) => {
   const appURL = "https://abideinthevine.vercel.app";
   const OGTitle = meta ? meta.title : "Abide in the Vine";
   const OGUrl = meta ? `${appURL}/blogs/${meta.slug}` : appURL;
-  const OGImg = meta ? meta.banner.url : "/assets/abide-in-the-vine.png";
+  const OGImg = meta ? meta.banner.url : bannerUrl;
   const OGImgAlt = meta ? meta.title : "Abide in the Vine";
   const OGDesc = meta
     ? meta.description

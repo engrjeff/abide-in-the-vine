@@ -24,7 +24,7 @@ const PostCard = (props: PostCardProps) => {
             height={300}
           />
         </div>
-        <div className='py-4 px-6 space-y-2'>
+        <div className='py-4 px-6 space-y-2 font-article'>
           <h6 className='text-abide-dark text-2xl font-extrabold'>
             {post.title}
           </h6>

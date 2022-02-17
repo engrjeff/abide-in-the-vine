@@ -108,4 +108,12 @@
   .mobile-icon {
     @apply text-abide-dark absolute top-0 right-0 h-[70px] w-[70px] flex items-center justify-center cursor-pointer lg:hidden;
   }
+
+  .abide-article {
+    @apply text-abide-dark flex flex-col col-span-7 prose prose-lg font-article prose-p:text-justify;
+  }
+
+  blockquote > p {
+    text-align: left !important;
+  }
 }

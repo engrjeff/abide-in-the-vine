@@ -28,7 +28,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
   const nextBanner = nextPost.banner.formats.medium || nextPost.banner;
 
   return (
-    <Layout title={post.title}>
+    <Layout title={post.title} articleMetaData={post}>
       <SectionContainer className='my-32 flex flex-col items-center'>
         <Article post={post} />
         <div className='space-y-4 border-t border-abide-light mt-14 pt-6 max-w-[80ch]'>

@@ -28,7 +28,7 @@ const Article = (props: ArticleProps) => {
   const goToArticle = () => router.push(`/blogs/${post.slug}`);
 
   return (
-    <article className='text-abide-dark flex flex-col col-span-7 prose prose-lg font-article prose-p:text-justify'>
+    <article className='abide-article'>
       <div>
         <h4 className='text-3xl font-extrabold text-abide-dark'>
           {post.title}
