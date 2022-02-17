@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         main: ["Lato", "sans-serif"],
         quote: ["Great Vibes", "cursive"],
+        article: ["Merriweather", "serif"],
       },
       colors: {
         abide: {

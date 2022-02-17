@@ -42,7 +42,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
                 <p className='text-abide-gray text-justify'>
                   {nextPost.description}
                 </p>
-                <div className='flex gap-3'>
+                <div className='flex gap-2 flex-wrap'>
                   {nextPost.tags.map((tag) => (
                     <Tag key={tag.id} label={tag.name} />
                   ))}

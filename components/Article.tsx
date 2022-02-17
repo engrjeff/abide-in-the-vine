@@ -18,7 +18,7 @@ const Article = (props: ArticleProps) => {
   const router = useRouter();
   const { post, clamped } = props;
 
-  const contentClass = classnames("mt-6 prose lg:prose-xl", {
+  const contentClass = classnames("mt-6", {
     "line-clamp-4": clamped,
   });
 
@@ -28,7 +28,7 @@ const Article = (props: ArticleProps) => {
   const goToArticle = () => router.push(`/blogs/${post.slug}`);
 
   return (
-    <article className='text-justify text-abide-dark flex flex-col col-span-7'>
+    <article className='text-abide-dark flex flex-col col-span-7 prose prose-lg font-article prose-p:text-justify'>
       <div>
         <h4 className='text-3xl font-extrabold text-abide-dark'>
           {post.title}
@@ -51,7 +51,7 @@ const Article = (props: ArticleProps) => {
       />
       <ReactMarkdown className={contentClass}>{post.content}</ReactMarkdown>
       {clamped && (
-        <div className='mt-8'>
+        <div className='mt-8 not-prose font-main'>
           <AppButton size='medium' onClick={goToArticle}>
             Continue Reading
           </AppButton>
