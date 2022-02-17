@@ -35,7 +35,9 @@ const LatestPost = (props: LatestPostProps) => {
                 height={banner.height}
               />
             </div>
-            <p className='text-abide-gray text-lg mb-6'>{post.description}</p>
+            <p className='text-abide-gray text-lg mb-6 font-article'>
+              {post.description}
+            </p>
             <CTAButton
               isLink
               href={`/blogs/${post.slug}`}

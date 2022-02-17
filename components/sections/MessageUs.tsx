@@ -36,7 +36,7 @@ const MessageUs = () => {
               <AppButton>Send</AppButton>
             </form>
           </div>
-          <div className='absolute right-0'>
+          <div className='absolute right-0 hidden md:block'>
             <Image src={AbideSideLogo} alt='Abide in the Vine logo' />
           </div>
         </div>

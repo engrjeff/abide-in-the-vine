@@ -57,7 +57,7 @@ const Contact = () => {
           And Abide in the Lord
         </p>
         <div className='text-center w-[300px] md:w-[350px] space-y-4 my-4'>
-          <p className='text-4xl font-quote text-abide-dark leading-snug'>
+          <p className='text-3xl md:text-4xl font-quote text-abide-dark leading-snug'>
             Your words were found, and I ate them, And Your word was to me the
             joy and rejoicing of my heart
           </p>

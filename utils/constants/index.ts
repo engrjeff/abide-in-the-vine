@@ -9,5 +9,11 @@ export const navLinkItems = [
 export const API_URL =
   process.env.API_URL || "https://abide-in-the-vine.herokuapp.com";
 
-export const bannerUrl =
-  "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1645059264/Abide_in_the_Vine_yoi0yt.png";
+export const abide = {
+  bannerUrl:
+    "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1645059264/Abide_in_the_Vine_yoi0yt.png",
+  desc: "Having Christ as joy and finding joy in Christ.",
+  publisher: "https://www.facebook.com/abidingthevine",
+  author: "https://www.facebook.com/jhefecegrace",
+  fbAppId: "624015951991940",
+};

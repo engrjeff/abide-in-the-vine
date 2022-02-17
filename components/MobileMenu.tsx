@@ -27,11 +27,11 @@ const MobileMenu = () => {
         <button className='mobile-icon' onClick={toggleMenu}>
           <XIcon className='h-8 w-8' />
         </button>
-        <ul className='flex flex-col gap-y-6 pl-8 py-16' onClick={toggleMenu}>
+        <ul className='flex flex-col gap-y-3 py-16' onClick={toggleMenu}>
           {navLinkItems.map((item) => (
             <li key={item.path}>
               <Link href={item.path}>
-                <a className='text-3xl font-extrabold text-abide-dark uppercase tracking-wider'>
+                <a className='text-3xl font-extrabold text-abide-dark uppercase tracking-wider px-6 py-4 w-full inline-block'>
                   {item.label}
                 </a>
               </Link>
