@@ -10,7 +10,7 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.pathname !== "/blogs/[slug]") return;
+    if (router.pathname !== "/blogs/[slug]") return setScrollIndicatorWidth(0);
 
     const onScroll = () => {
       const winScroll =

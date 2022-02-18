@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { GetStaticProps, NextPage } from "next";
-import Link from "next/link";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
 import qs from "qs";
 
@@ -16,6 +15,7 @@ import { CMSPostResponse, CMSTagResponse, Post, Tag } from "@utils/types";
 import { transformPostResponse, transformTagResponse } from "@utils/helpers";
 import { API_URL } from "@utils/constants";
 import TagUI from "@components/Tag";
+import NoScrollLink from "@components/NoScrollLink";
 
 interface BlogsPageProps {
   posts: Post[];
@@ -56,7 +56,7 @@ const BlogsPage: NextPage<BlogsPageProps> = (props) => {
                       key={p.id}
                       className='py-4 group border-b border-abide-light'
                     >
-                      <Link passHref href={`/blogs/${p.slug}`}>
+                      <NoScrollLink passHref href={`/blogs/${p.slug}`}>
                         <a
                           className='abide-article text-base'
                           aria-label={p.title}
@@ -71,7 +71,7 @@ const BlogsPage: NextPage<BlogsPageProps> = (props) => {
                           </div>
                           <p className='line-clamp-2'>{p.description}</p>
                         </a>
-                      </Link>
+                      </NoScrollLink>
                     </li>
                   ))}
                 </ul>

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import Tag from "./Tag";
 import { Post } from "@utils/types";
 import { formatDate } from "@utils/helpers";
+import NoScrollLink from "./NoScrollLink";
 
 interface PostCardProps {
   post: Post;
@@ -14,7 +14,7 @@ const PostCard = (props: PostCardProps) => {
   const { post } = props;
   const banner = post.banner.formats.small || post.banner;
   return (
-    <Link href={`/blogs/${post.slug}`}>
+    <NoScrollLink href={`/blogs/${post.slug}`}>
       <a className='postcard flex flex-col'>
         <Image
           src={banner.url}
@@ -44,7 +44,7 @@ const PostCard = (props: PostCardProps) => {
           </div>
         </div>
       </a>
-    </Link>
+    </NoScrollLink>
   );
 };
 
