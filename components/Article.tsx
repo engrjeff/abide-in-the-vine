@@ -6,8 +6,6 @@ import classnames from "classnames";
 
 import { Post } from "@utils/types";
 import { formatDate } from "@utils/helpers";
-import AppButton from "./AppButton";
-import { useRouter } from "next/router";
 import CTAButton from "./CTAButton";
 
 interface ArticleProps {
@@ -16,7 +14,6 @@ interface ArticleProps {
 }
 
 const Article = (props: ArticleProps) => {
-  const router = useRouter();
   const { post, clamped } = props;
 
   const contentClass = classnames("mt-6", {
@@ -47,6 +44,7 @@ const Article = (props: ArticleProps) => {
         alt={post.title}
         width={banner.width}
         height={banner.height}
+        priority
         className='aspect-video'
       />
       <ReactMarkdown className={contentClass}>{post.content}</ReactMarkdown>

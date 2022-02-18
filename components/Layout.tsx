@@ -1,9 +1,11 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 
 import { Post } from "@utils/types";
 import { abide } from "@utils/constants";
+import ArticleLd from "./ArticleLd";
 
 // framer motion
 const variants = {
@@ -20,50 +22,50 @@ interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const { title, children, articleMetaData: meta } = props;
-  const appURL = "https://abideinthevine.vercel.app";
+  const appURL = abide.siteUrl;
   const OGTitle = meta ? meta.title : "Abide in the Vine";
   const OGUrl = meta ? `${appURL}/blogs/${meta.slug}` : appURL;
   const OGImg = meta ? meta.banner.url : abide.bannerUrl;
   const OGImgAlt = meta ? meta.title : "Abide in the Vine";
   const OGDesc = meta ? meta.description : abide.desc;
-  const appDesc = meta
-    ? meta.tags.map((t) => t.name).join(", ")
-    : abide.keywords;
+  const appDesc = meta ? meta.tags.map((t) => t.name).join(", ") : abide.desc;
   return (
     <>
-      <Head>
-        <title>{title ? title : "Abide in the Vine"}</title>
-        <meta property='fb:app_id' content={abide.fbAppId} />
-        <meta property='og:site_name' content='Abide in the Vine' />
-        <meta property='description' content={appDesc} />
-        <meta property='og:url' content={OGUrl} />
-        <meta property='og:title' content={OGTitle} />
-        <meta property='og:description' content={OGDesc} />
-        <meta property='og:image' content={OGImg} />
-        <meta property='og:image:alt' content={OGImgAlt} />
-        <meta name='twitter:title' content={OGTitle} />
-        <meta name='twitter:site' content='@engrjeffsegovia' />
-        <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:description' content={OGDesc} />
-        <meta name='twitter:image' content={OGImg} />
-
-        {meta && (
-          <>
-            <meta property='og:type' content='article' />
-            <meta property='article:publisher' content={abide.publisher} />
-            <meta property='article:author' content={abide.author} />
-            <meta
-              property='article:published_time'
-              content={meta.publishedAt as string}
-            />
-            <meta
-              property='article:modified_time'
-              content={meta.updatedAt as string}
-            />
-            <meta property='article:section' content='Blogs' />
-          </>
-        )}
-      </Head>
+      <NextSeo
+        defaultTitle='Abide in the Vine'
+        title={title ? title : "Abide in the Vine"}
+        description={appDesc}
+        canonical={abide.canonicalUrl}
+        facebook={{ appId: abide.fbAppId }}
+        openGraph={{
+          url: OGUrl,
+          title: OGTitle,
+          description: OGDesc,
+          site_name: "Abide in the Vine",
+          type: meta ? "article" : "website",
+          article: meta
+            ? {
+                publishedTime: meta.publishedAt.toString(),
+                modifiedTime: meta.updatedAt.toString(),
+                section: "Blogs",
+                authors: [abide.author],
+                tags: meta.tags.map((t) => t.name),
+              }
+            : undefined,
+          images: [
+            {
+              url: OGImg,
+              alt: OGImgAlt,
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@engrjeffsegovia",
+          site: "Abide in the Vine",
+          cardType: "summary_large_image",
+        }}
+      />
+      {meta && <ArticleLd article={meta} />}
       <motion.main
         variants={variants} // Pass the variant object into Framer Motion
         initial='hidden' // Set the initial state to variants.hidden
