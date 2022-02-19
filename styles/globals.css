@@ -86,7 +86,7 @@
   }
 
   .btn-tab {
-    @apply flex items-center justify-center px-6 py-3 uppercase text-abide-dark font-extrabold tracking-wide border-b-2 border-transparent hover:bg-abide-light duration-150 transition;
+    @apply flex items-center justify-center px-6 py-3 uppercase text-abide-dark font-extrabold tracking-wide border-b-2 border-transparent md:hover:bg-abide-light duration-150 transition;
   }
 
   .btn-tab.active {
