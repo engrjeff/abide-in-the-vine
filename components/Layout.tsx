@@ -65,6 +65,12 @@ const Layout = (props: LayoutProps) => {
           cardType: "summary_large_image",
         }}
       />
+      <meta
+        name='keywords'
+        content={
+          meta ? meta.tags.map((t) => t.name).join(", ") : abide.keywords
+        }
+      />
       {meta && <ArticleLd article={meta} />}
       <motion.main
         variants={variants} // Pass the variant object into Framer Motion

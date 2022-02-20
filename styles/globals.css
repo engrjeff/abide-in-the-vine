@@ -37,11 +37,16 @@
   }
 
   .nav-link {
-    @apply text-abide-dark font-extrabold text-[13px] uppercase tracking-widest duration-200 transition-colors hover:text-abide-main;
+    @apply relative text-abide-dark font-extrabold text-[13px] uppercase tracking-widest duration-200 transition-colors hover:text-abide-main;
   }
 
   .nav-link:not(.nav-active) {
     @apply hover:text-abide-main;
+  }
+
+  .nav-link.nav-active::after {
+    content: "";
+    @apply absolute h-[3px] rounded-md bg-abide-accent w-[60%] -bottom-2 left-1/2 -translate-x-1/2 duration-200 transition-transform;
   }
 
   .nav-active {
