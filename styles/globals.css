@@ -121,4 +121,8 @@
   blockquote > p {
     text-align: left !important;
   }
+
+  .copy-alert {
+    @apply bg-abide-dark text-white font-semibold font-main shadow-sm px-8 py-2 text-sm duration-200 transition-transform rounded-full;
+  }
 }
