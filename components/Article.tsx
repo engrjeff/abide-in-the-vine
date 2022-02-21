@@ -26,10 +26,11 @@ const Article = (props: ArticleProps) => {
 
   const banner = post.banner.formats.medium || post.banner;
   const timeToRead = readingTime(post.content).text;
+  const isBlogSlug = router.pathname === "/blogs/[slug]";
 
   return (
     <article className='abide-article'>
-      {router.pathname === "/blogs/[slug]" && (
+      {isBlogSlug && (
         <BackButton backToPath={`/blogs/${post.slug}`} label='Back to Blogs' />
       )}
       <div>
@@ -46,7 +47,7 @@ const Article = (props: ArticleProps) => {
           </span>
         </div>
       </div>
-      <ShareButtons />
+      {isBlogSlug && <ShareButtons />}
       <Image
         src={banner.url}
         alt={post.title}

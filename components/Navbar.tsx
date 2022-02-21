@@ -42,7 +42,7 @@ const Navbar = () => {
       </div>
       <div
         ref={navRef}
-        className='h-[3px] bg-abide-accent absolute top-full left-0 z-20'
+        className='h-1 bg-abide-accent absolute top-full left-0 z-20'
       />
     </nav>
   );
