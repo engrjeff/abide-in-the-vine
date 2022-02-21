@@ -16,6 +16,10 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <meta
+            name='google-site-verification'
+            content='5yQx6yLP4jBwOm6OgjDQYoJQV3i0GQUFMXBzcfcI_tE'
+          />
           <meta name='msapplication-TileColor' content='#da532c' />
           <meta
             name='msapplication-config'
