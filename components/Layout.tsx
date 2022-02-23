@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { Post } from "@utils/types";
 import { abide } from "@utils/constants";
 import ArticleLd from "./ArticleLd";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 // framer motion
 const variants = {
@@ -28,7 +30,7 @@ const Layout = (props: LayoutProps) => {
   const OGImg = meta ? meta.banner.url : abide.bannerUrl;
   const OGImgAlt = meta ? meta.title : "Abide in the Vine";
   const OGDesc = meta ? meta.description : abide.desc;
-  const appDesc = meta ? meta.tags.map((t) => t.name).join(", ") : abide.desc;
+  const appDesc = meta ? meta.description : abide.desc;
   return (
     <>
       <NextSeo
@@ -72,8 +74,18 @@ const Layout = (props: LayoutProps) => {
             meta ? meta.tags.map((t) => t.name).join(", ") : abide.keywords
           }
         />
+        <meta
+          content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'
+          name='viewport'
+        />
+        <meta content='DPR, Width, Viewport-Width' httpEquiv='Accept-CH' />
+        <meta
+          name='google-site-verification'
+          content='5yQx6yLP4jBwOm6OgjDQYoJQV3i0GQUFMXBzcfcI_tE'
+        />
       </Head>
       {meta && <ArticleLd article={meta} />}
+      <Navbar />
       <motion.main
         variants={variants} // Pass the variant object into Framer Motion
         initial='hidden' // Set the initial state to variants.hidden
@@ -83,6 +95,7 @@ const Layout = (props: LayoutProps) => {
       >
         {children}
       </motion.main>
+      <Footer />
     </>
   );
 };

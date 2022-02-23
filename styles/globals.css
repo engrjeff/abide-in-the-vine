@@ -125,4 +125,8 @@
   .copy-alert {
     @apply bg-abide-dark text-white font-semibold font-main shadow-sm px-8 py-2 text-sm duration-200 transition-transform rounded-full;
   }
+
+  .app-container {
+    @apply md:container mx-auto px-6 md:px-20;
+  }
 }

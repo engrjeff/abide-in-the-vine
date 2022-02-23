@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import Layout from "@components/Layout";
 import Hero from "@components/sections/Hero";
 import LatestPost from "@components/sections/LatestPost";
 import MorePosts from "@components/sections/MorePosts";
@@ -10,6 +9,7 @@ import OtherLinks from "@components/sections/OtherLinks";
 import { CMSPostResponse, Post } from "@utils/types";
 import { transformPostResponse } from "@utils/helpers";
 import { API_URL } from "@utils/constants";
+import Layout from "@components/Layout";
 
 interface HomeProps {
   posts: Post[];

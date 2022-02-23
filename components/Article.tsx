@@ -30,35 +30,25 @@ const Article = (props: ArticleProps) => {
 
   return (
     <article className='abide-article'>
-      {isBlogSlug && (
-        <BackButton backToPath={`/blogs/${post.slug}`} label='Back to Blogs' />
-      )}
-      <div>
-        <h4 className='text-3xl font-extrabold text-abide-dark mt-2'>
-          {post.title}
-        </h4>
-        <div className='flex items-center mt-1'>
-          <span className='flex uppercase text-abide-gray tracking-wider text-sm mb-8'>
-            {formatDate(post.createdAt)}
-            &nbsp;|
-          </span>
-          <span className='flex uppercase text-abide-gray tracking-wider text-sm mb-8'>
-            &nbsp; {timeToRead}
-          </span>
-        </div>
-      </div>
+      <h4 className='text-3xl font-extrabold text-abide-dark mt-2'>
+        {post.title}
+      </h4>
+      <span className='flex items-center mt-1 uppercase text-abide-gray tracking-wider text-sm mb-8'>
+        {formatDate(post.createdAt)} | {timeToRead}
+      </span>
       {isBlogSlug && <ShareButtons />}
-      <Image
-        src={banner.url}
-        alt={post.title}
-        width={banner.width}
-        height={banner.height}
-        priority
-        className='aspect-video'
-      />
+      <div className='aspect-video'>
+        <Image
+          src={banner.url}
+          alt={post.title}
+          width={banner.width}
+          height={banner.height}
+          priority
+        />
+      </div>
       <ReactMarkdown className={contentClass}>{post.content}</ReactMarkdown>
       {clamped && (
-        <div className='mt-8 not-prose font-main'>
+        <div className='mt-8 not-prose font-main self-center md:self-auto'>
           <CTAButton
             isLink
             href={`/blogs/${post.slug}`}

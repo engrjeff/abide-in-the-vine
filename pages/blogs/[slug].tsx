@@ -30,12 +30,12 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
 
   return (
     <Layout title={post.title} articleMetaData={post}>
-      <SectionContainer className='my-24 md:my-32 flex flex-col items-center'>
+      <SectionContainer className='my-32 flex flex-col items-center'>
         <Article post={post} />
         <div className='space-y-4 border-t border-abide-light mt-14 pt-6 max-w-[80ch]'>
           <SectionTitle title='Next Post' />
           <Link href={`/blogs/${nextPost.slug}`}>
-            <a className='flex flex-col-reverse md:flex-row gap-x-4 border border-abide-light postcard'>
+            <a className='flex flex-col-reverse md:flex-row gap-x-4 border border-abide-light postcard no-underline'>
               <div className='p-6 flex flex-col'>
                 <div className='font-article space-y-4 max-w-[500px]'>
                   <h5 className='text-abide-dark text-2xl font-extrabold'>
