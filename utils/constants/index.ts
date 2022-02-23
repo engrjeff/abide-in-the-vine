@@ -10,7 +10,7 @@ export const API_URL =
   process.env.API_URL || "https://abide-in-the-vine.herokuapp.com";
 
 export const abide = {
-  siteUrl: "https://abideinthevineph.org",
+  siteUrl: "https://www.abideinthevineph.org",
   canonicalUrl: "https://www.abideinthevineph.org",
   bannerUrl:
     "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1645059264/Abide_in_the_Vine_yoi0yt.png",
