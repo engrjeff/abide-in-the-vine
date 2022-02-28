@@ -9,7 +9,6 @@ import { Post } from "@utils/types";
 import { formatDate } from "@utils/helpers";
 import CTAButton from "./CTAButton";
 import ShareButtons from "./ShareButtons";
-import BackButton from "./BackButton";
 
 interface ArticleProps {
   post: Post;

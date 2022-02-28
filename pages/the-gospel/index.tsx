@@ -7,10 +7,12 @@ import qs from "qs";
 
 import Layout from "@components/Layout";
 import SectionContainer from "@components/SectionContainer";
-import { API_URL } from "@utils/constants";
+import { abide, API_URL } from "@utils/constants";
 import { CMSGospelResponse, GospelSection } from "@utils/types";
 import { transformGospelResponse } from "@utils/helpers";
 import BackButton from "@components/BackButton";
+import { NextSeo } from "next-seo";
+import ShareButtons from "@components/ShareButtons";
 
 interface GospelPageProps {
   gospelData: GospelSection[];
@@ -22,14 +24,41 @@ const GospelPage: NextPage<GospelPageProps> = (props) => {
   return (
     <Layout
       title='The Gospel of Jesus Christ | Abide in the Vine'
-      descr='Discover what the gospel is : why does a man need saving? what is salvation? how can a man be saved? how does the sacrifice of Jesus Christ save many? Find out the answers to these questions in this post.'
+      descr={abide.gospelDesc}
     >
+      <NextSeo
+        openGraph={{
+          url: `${abide.siteUrl}/the-gospel`,
+          title: "The Gospel of Jesus Christ | Abide in the Vine",
+          description: abide.gospelDesc,
+          site_name: "Abide in the Vine",
+          type: "article",
+          article: {
+            section: "Blogs",
+            authors: [abide.author],
+            tags: [
+              "what is the gospel",
+              "how to be saved",
+              "Jesus Christ",
+              "Christianity",
+              "salvation",
+            ],
+          },
+          images: [
+            {
+              url: abide.gospelBanner,
+              alt: "Gospel of Jesus Christ",
+            },
+          ],
+        }}
+      />
       <SectionContainer className='my-32 flex flex-col items-center'>
         <BackButton backToPath='/' label='Back to Home' />
         <article className='abide-article mt-4'>
           <h1 className='text-3xl font-extrabold text-abide-dark mt-2'>
             The Gospel of Jesus Christ
           </h1>
+          <ShareButtons />
           {gospelData.map((g) => (
             <div key={g.id}>
               <h2 className='mt-8 border-b-2 border-abide-accent inline-block text-2xl'>

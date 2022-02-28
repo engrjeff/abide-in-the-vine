@@ -22,6 +22,10 @@ export const abide = {
   medium: "https://ecejhefgrace.medium.com",
   instagram: "https://www.instagram.com/abidingthevine",
   youtube: "https://www.youtube.com/channel/UCOFSY_HxuFlVsIslH5NuNVQ/featured",
+  gospelDesc:
+    "Discover what the gospel is : why does a man need saving? what is salvation? how can a man be saved? how does the sacrifice of Jesus Christ save many? Find out the answers to these questions in this post.",
+  gospelBanner:
+    "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1645711981/medium_1_3957528baf.png",
   keywords:
     "how to abide in God, how to abide in Christ, John 15:4, how to be joyful in God, gospel, grace, joy, satisfaction, faith, Christianity",
 };

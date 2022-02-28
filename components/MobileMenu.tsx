@@ -41,6 +41,13 @@ const MobileMenu = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <Link href='/the-gospel'>
+              <a className='text-3xl font-extrabold text-abide-dark uppercase tracking-wider px-6 py-4 w-full inline-block'>
+                The Gospel
+              </a>
+            </Link>
+          </li>
         </ul>
       </div>
     </>
