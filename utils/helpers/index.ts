@@ -1,4 +1,11 @@
-import { CMSPostResponse, CMSTagResponse, Post, Tag } from "@utils/types";
+import {
+  CMSGospelResponse,
+  CMSPostResponse,
+  CMSTagResponse,
+  GospelSection,
+  Post,
+  Tag,
+} from "@utils/types";
 import { format } from "date-fns";
 
 export const formatDate = (date: Date | string) =>
@@ -26,4 +33,16 @@ export const transformTagResponse = (cmsTagResponse: CMSTagResponse) => {
   }));
 
   return tags;
+};
+
+export const transformGospelResponse = (
+  cmsGospelResponse: CMSGospelResponse
+) => {
+  const gospelData: GospelSection[] = cmsGospelResponse.data.map((data) => ({
+    id: data.id,
+    ...data.attributes,
+    banner: data.attributes.sectionImage.data.attributes,
+  }));
+
+  return gospelData;
 };

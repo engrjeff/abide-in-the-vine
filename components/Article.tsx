@@ -30,9 +30,9 @@ const Article = (props: ArticleProps) => {
 
   return (
     <article className='abide-article'>
-      <h4 className='text-3xl font-extrabold text-abide-dark mt-2'>
+      <h1 className='text-3xl font-extrabold text-abide-dark mt-2'>
         {post.title}
-      </h4>
+      </h1>
       <span className='flex items-center mt-1 uppercase text-abide-gray tracking-wider text-sm mb-8'>
         {formatDate(post.createdAt)} | {timeToRead}
       </span>

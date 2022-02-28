@@ -36,6 +36,11 @@ export interface CMSTagResponse {
   meta: any;
 }
 
+export interface CMSGospelResponse {
+  data: GospelSectionResponse[];
+  meta: any;
+}
+
 export interface Tag {
   id: number;
   name: string;
@@ -46,6 +51,22 @@ export interface TagResponse {
     id: number;
     attributes: TagAttributes;
   }[];
+}
+
+export interface GospelSectionResponse {
+  id: number;
+  attributes: {
+    sectionTitle: string;
+    sectionContent: string;
+    sectionImage: BannerResponse;
+  };
+}
+
+export interface GospelSection {
+  id: number;
+  sectionTitle: string;
+  sectionContent: string;
+  banner: Banner;
 }
 
 export interface BannerResponse {

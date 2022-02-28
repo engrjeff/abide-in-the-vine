@@ -22,12 +22,20 @@ const Hero = () => {
               John 15:4
             </p>
           </div>
-          <CTAButton
-            text='Read the Blogs'
-            isLink
-            href='/blogs'
-            className='self-center md:self-start'
-          />
+          <div className='flex flex-col gap-y-3 items-center'>
+            <CTAButton
+              text='Read the Blogs'
+              isLink
+              href='/blogs'
+              className='w-[235px] text-center md:w-auto self-center md:self-start'
+            />
+            <CTAButton
+              text='Know the Gospel'
+              isLink
+              href='/the-gospel'
+              className='self-center md:self-start md:hidden bg-white text-abide-main border border-abide-main'
+            />
+          </div>
         </div>
         <div className='absolute top-20 right-0 w-[500px] h-[400px] hidden md:block'>
           <Image src={HeroArt} alt='abide in the vine art' />

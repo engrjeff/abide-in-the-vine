@@ -18,19 +18,20 @@ const variants = {
 
 interface LayoutProps {
   title?: string;
+  descr?: string;
   children: ReactNode;
   articleMetaData?: Post;
 }
 
 const Layout = (props: LayoutProps) => {
-  const { title, children, articleMetaData: meta } = props;
+  const { title, children, articleMetaData: meta, descr } = props;
   const appURL = abide.siteUrl;
   const OGTitle = meta ? meta.title : "Abide in the Vine";
   const OGUrl = meta ? `${appURL}/blogs/${meta.slug}` : appURL;
   const OGImg = meta ? meta.banner.url : abide.bannerUrl;
   const OGImgAlt = meta ? meta.title : "Abide in the Vine";
-  const OGDesc = meta ? meta.description : abide.desc;
-  const appDesc = meta ? meta.description : abide.desc;
+  const OGDesc = meta ? meta.description : descr ? descr : abide.desc;
+  const appDesc = meta ? meta.description : descr ? descr : abide.desc;
   return (
     <>
       <NextSeo

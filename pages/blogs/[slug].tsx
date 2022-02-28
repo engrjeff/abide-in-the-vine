@@ -13,6 +13,7 @@ import SectionContainer from "@components/SectionContainer";
 import Tag from "@components/Tag";
 import SectionTitle from "@components/SectionTitle";
 import { API_URL } from "@utils/constants";
+import BackButton from "@components/BackButton";
 
 interface IUrlQueryParams extends ParsedUrlQuery {
   slug: string;
@@ -31,6 +32,10 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
   return (
     <Layout title={post.title} articleMetaData={post}>
       <SectionContainer className='my-32 flex flex-col items-center'>
+        <BackButton
+          backToPath='/blogs/latest-post'
+          label='Back to Latest Post'
+        />
         <Article post={post} />
         <div className='space-y-4 border-t border-abide-light mt-14 pt-6 max-w-[80ch]'>
           <SectionTitle title='Next Post' />
