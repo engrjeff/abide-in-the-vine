@@ -11,7 +11,7 @@ export const API_URL =
 
 export const abide = {
   siteUrl: "https://www.abideinthevineph.org",
-  canonicalUrl: "https://www.abideinthevineph.org",
+  canonicalUrl: "https://abideinthevineph.org",
   bannerUrl:
     "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1645059264/Abide_in_the_Vine_yoi0yt.png",
   desc: "Be delighted in God and the Lord Jesus Christ through God-exalting, Christ-centered, and Spirit-led blog posts.",
