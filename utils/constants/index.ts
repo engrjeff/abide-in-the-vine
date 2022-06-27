@@ -5,9 +5,15 @@ export const navLinkItems = [
   { path: "#contact-us", label: "Contact Us" },
 ];
 
+export const menuItems = [
+  { label: "Home", path: "/" },
+  { label: "Blogs", path: "/blogs" },
+  { label: "About", path: "/about" },
+  { label: "Contact Us", path: "/contact" },
+];
+
 // export const API_URL = process.env.API_URL || "http://localhost:1337";
-export const API_URL =
-  process.env.API_URL || "https://abide-in-the-vine.herokuapp.com";
+export const API_URL = process.env.API_URL || "https://abide-in-the-vine.herokuapp.com";
 
 export const abide = {
   siteUrl: "https://www.abideinthevineph.org",

@@ -9,6 +9,8 @@ export interface Post {
   publishedAt: Date | string;
   tags: Tag[];
   banner: Banner;
+  bannerId: string;
+  bannerUrl: string;
 }
 
 export interface PostResponse {
@@ -97,6 +99,9 @@ export interface Banner {
   url: string;
   previewUrl: any;
   provider: string;
+  provider_metadata: {
+    public_id: string;
+  };
   createdAt: string;
   updatedAt: string;
 }

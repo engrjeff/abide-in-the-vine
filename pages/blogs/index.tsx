@@ -1,122 +1,61 @@
-import React, { useState } from "react";
-import { GetStaticProps, NextPage } from "next";
-import Link from "next/link";
-import { ExternalLinkIcon } from "@heroicons/react/outline";
+import type { NextPage, GetServerSideProps } from "next";
+import { NextSeo } from "next-seo";
 import qs from "qs";
 
-import Layout from "@components/Layout";
-import Contact from "@components/sections/Contact";
-import SectionContainer from "@components/SectionContainer";
-import Article from "@components/Article";
-import AppTabs from "@components/AppTabs";
-import AllPosts from "@components/AllPosts";
-import SectionTitle from "@components/SectionTitle";
-
-import { CMSPostResponse, CMSTagResponse, Post, Tag } from "@utils/types";
-import { transformPostResponse, transformTagResponse } from "@utils/helpers";
+import type { CMSPostResponse, Post } from "@utils/types";
+import { transformPostResponse } from "@utils/helpers";
 import { API_URL } from "@utils/constants";
-import TagUI from "@components/Tag";
+import PostCard from "@components/lib/PostCard";
 
-interface BlogsPageProps {
+interface BlogsProps {
   posts: Post[];
-  tags: Tag[];
-  relatedPosts: Post[];
 }
 
-const BlogsPage: NextPage<BlogsPageProps> = (props) => {
-  const [currentTab, setCurrentTab] = useState("latest-post");
-  const { posts, tags, relatedPosts } = props;
-
-  const latestPost = posts[0];
-
+const BlogsPage: NextPage<BlogsProps> = ({ posts }) => {
+  console.log(posts[0]);
   return (
-    <Layout title='Blogs - Abide in the Vine'>
-      <SectionContainer className='my-24 md:my-32'>
-        <div className='flex items-center'>
-          <h1 className='text-4xl font-extrabold text-abide-dark'>Blogs</h1>
+    <>
+      <NextSeo title='Abide in the Vine - Blogs' />
+      <section className='container mx-auto p-4 lg:p-10 py-6'>
+        <h1 className='text-abide-dark dark:text-abide-light text-5xl font-extrabold mb-8'>
+          Blogs
+        </h1>
+        {/* Insert tags filter here */}
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} isSmall />
+          ))}
         </div>
-        <div className='space-y-4 mt-8'>
-          <AppTabs current={currentTab} onChange={setCurrentTab} />
-          {currentTab === "latest-post" && (
-            <div className='grid md:grid-cols-10 md:pt-4 divide-y md:divide-y-0 gap-y-12 md:gap-0'>
-              <Article post={latestPost} clamped />
-              <div className='col-span-10 md:col-span-3 pt-6 md:mt-3 md:border-l md:border-abide-light md:pl-6'>
-                <SectionTitle title='Related Posts' />
-                <div className='space-y-4 mt-5'>
-                  <p className='filter-label'>Tags</p>
-                  <div className='flex gap-2 flex-wrap'>
-                    {latestPost.tags.map((tag) => (
-                      <TagUI key={tag.id} label={tag.name} />
-                    ))}
-                  </div>
-                </div>
-                <ul role='list' className='py-6'>
-                  {relatedPosts.map((p) => (
-                    <li
-                      key={p.id}
-                      className='py-4 group border-b border-abide-light'
-                    >
-                      <Link passHref href={`/blogs/${p.slug}`}>
-                        <a
-                          className='abide-article text-base'
-                          aria-label={p.title}
-                        >
-                          <div className='flex items-center'>
-                            <h5 className='text-lg font-semibold w-[80%]'>
-                              {p.title}
-                            </h5>
-                            <span className='text-abide-gray ml-auto self-start hidden group-hover:inline duration-150'>
-                              <ExternalLinkIcon className='h5 w-5' />
-                            </span>
-                          </div>
-                          <p className='line-clamp-2'>{p.description}</p>
-                        </a>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-          {currentTab === "all-posts" && (
-            <div className='my-16'>
-              <AllPosts posts={posts} tags={tags} />
-            </div>
-          )}
+        <div className='mt-20 text-center'>
+          <button className='btn-cta'>Load More Posts</button>
         </div>
-      </SectionContainer>
-      <Contact />
-    </Layout>
+      </section>
+    </>
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = qs.stringify(
-    { populate: ["tags", "banner"], sort: ["createdAt:desc"] },
+    {
+      fields: ["title", "description", "publishedAt"],
+      populate: ["tags", "banner"],
+      sort: ["publishedAt:desc"],
+      pagination: {
+        start: 0,
+        limit: 9,
+      },
+    },
     { encodeValuesOnly: true }
   );
 
   const response = await fetch(`${API_URL}/api/posts?${query}`);
   const jsonDoc: CMSPostResponse = await response.json();
 
-  const tagResponse = await fetch(`${API_URL}/api/tags?sort=createdAt:desc`);
-
-  const tagsJsonDoc: CMSTagResponse = await tagResponse.json();
-
   const posts = transformPostResponse(jsonDoc);
-  const tags = transformTagResponse(tagsJsonDoc);
-
-  const latestPostTags = posts[0].tags.map((t) => t.id);
-
-  const relatedPosts = posts.filter((p) =>
-    p.tags.some((t) => latestPostTags.includes(t.id) && p.id !== posts[0].id)
-  );
 
   return {
     props: {
       posts,
-      tags,
-      relatedPosts,
     },
   };
 };
