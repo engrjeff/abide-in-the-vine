@@ -11,7 +11,7 @@ import { format } from "date-fns";
 export const formatDate = (date: Date | string) => format(new Date(date), "MMMM dd, yyyy");
 
 export const transformPostResponse = (cmsPostResponse: CMSPostResponse) => {
-  const posts: Post[] = cmsPostResponse.data.map((post) => ({
+  const posts: Omit<Post, "blurImageUrl">[] = cmsPostResponse.data.map((post) => ({
     id: post.id,
     ...post.attributes,
     tags: post.attributes.tags.data.map((tag) => ({

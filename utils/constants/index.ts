@@ -9,7 +9,7 @@ export const menuItems = [
   { label: "Home", path: "/" },
   { label: "Blogs", path: "/blogs" },
   { label: "About", path: "/about" },
-  { label: "Contact Us", path: "/contact" },
+  { label: "What We Believe", path: "/what-we-believe" },
 ];
 
 // export const API_URL = process.env.API_URL || "http://localhost:1337";

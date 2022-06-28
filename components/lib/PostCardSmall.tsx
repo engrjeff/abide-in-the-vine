@@ -14,10 +14,12 @@ const PostCardSmall = ({ post }: { post: Post }) => {
           alt={post.banner.alternativeText || post.banner.caption}
           layout='fill'
           className='object-cover object-center rounded-xl'
+          placeholder='blur'
+          blurDataURL={post.blurImageUrl}
         />
       </div>
       <div className='col-span-3 flex flex-col self-start gap-y-3'>
-        <Link href='/'>
+        <Link href={`/blogs/${post.slug}`}>
           <a className='text-2xl lg:text-[22px] lg:leading-tight font-black text-abide-dark inline-block hover:underline dark:text-abide-light'>
             {post.title}
           </a>

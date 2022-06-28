@@ -6,16 +6,16 @@ import type { CMSPostResponse, Post } from "@utils/types";
 import { transformPostResponse } from "@utils/helpers";
 import { API_URL } from "@utils/constants";
 import PostCard from "@components/lib/PostCard";
+import { getPlaiceholder } from "plaiceholder";
 
 interface BlogsProps {
   posts: Post[];
 }
 
 const BlogsPage: NextPage<BlogsProps> = ({ posts }) => {
-  console.log(posts[0]);
   return (
     <>
-      <NextSeo title='Abide in the Vine - Blogs' />
+      <NextSeo title='Blogs - Abide in the Vine' />
       <section className='container mx-auto p-4 lg:p-10 py-6'>
         <h1 className='text-abide-dark dark:text-abide-light text-5xl font-extrabold mb-8'>
           Blogs
@@ -37,7 +37,7 @@ const BlogsPage: NextPage<BlogsProps> = ({ posts }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = qs.stringify(
     {
-      fields: ["title", "description", "publishedAt"],
+      fields: ["title", "slug", "description", "publishedAt"],
       populate: ["tags", "banner"],
       sort: ["publishedAt:desc"],
       pagination: {
@@ -51,7 +51,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(`${API_URL}/api/posts?${query}`);
   const jsonDoc: CMSPostResponse = await response.json();
 
-  const posts = transformPostResponse(jsonDoc);
+  const postsData = transformPostResponse(jsonDoc);
+
+  const posts = await Promise.all(
+    postsData.map(async (post) => {
+      const { base64 } = await getPlaiceholder(post.bannerUrl);
+
+      return {
+        ...post,
+        blurImageUrl: base64,
+      };
+    })
+  ).then((values) => values);
 
   return {
     props: {

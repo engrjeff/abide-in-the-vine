@@ -8,7 +8,7 @@ import { API_URL } from "@utils/constants";
 import HeroSection from "@components/lib/HeroSection";
 import FeaturedPostsSection from "@components/lib/FeaturedPostsSection";
 import MostRecentPostsSection from "@components/lib/MostRecentPostsSection";
-import MessageUsSection from "@components/lib/MessageUsSection";
+import { getPlaiceholder } from "plaiceholder";
 
 interface HomeProps {
   featuredPosts: Post[];
@@ -29,7 +29,7 @@ const Home: NextPage<HomeProps> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = qs.stringify(
     {
-      fields: ["title", "description", "publishedAt"],
+      fields: ["title", "description", "publishedAt", "slug"],
       populate: ["tags", "banner"],
       sort: ["publishedAt:desc"],
       pagination: {
@@ -45,8 +45,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const posts = transformPostResponse(jsonDoc);
 
-  const featuredPosts = posts.slice(0, 5);
-  const recentPosts = posts.slice(5);
+  const postsData = await Promise.all(
+    posts.map(async (post) => {
+      const { base64 } = await getPlaiceholder(post.bannerUrl);
+
+      return {
+        ...post,
+        blurImageUrl: base64,
+      };
+    })
+  ).then((values) => values);
+
+  const featuredPosts = postsData.slice(0, 5);
+  const recentPosts = postsData.slice(5);
 
   return {
     props: {
