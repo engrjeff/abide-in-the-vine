@@ -29,9 +29,9 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   return (
     <>
       <NextSeo title={post.title} />
-      <div className='max-w-4xl mx-auto mt-10'>
+      <div className='px-5 md:px-10 max-w-4xl mx-auto mt-2 md:mt-10'>
         <div className='space-y-3'>
-          <h1 className='text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
+          <h1 className='text-3xl md:text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
             {post.title}
           </h1>
         </div>
@@ -47,7 +47,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
           </div>
           <div>
             <p className='text-gray-600 font-semibold dark:text-abide-mediumGray'>
-              Written by: Jeff Segovia
+              By: Jeff Segovia
             </p>
             <div className='text-sm text-gray-600 dark:text-abide-mediumGray'>
               <time>{formatDate(post.publishedAt)}</time> - <span>{timeToRead}</span>
@@ -65,14 +65,14 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
               blurDataURL={post.blurImageUrl}
             />
           </div>
-          {post.banner.caption && (
+          {/* {post.banner.caption && (
             <span className='block text-center text-abide-dark dark:text-abide-mediumGray'>
               {post.banner.caption}
             </span>
-          )}
+          )} */}
         </figure>
         <div className='max-w-3xl w-full mx-auto'>
-          <ReactMarkdown className='prose prose-xl prose-blockquote:border-abide-accent prose-blockquote:py-3 prose-blockquote:bg-abide-lighter text-justify dark:prose-invert dark:prose-blockquote:bg-abide-dark'>
+          <ReactMarkdown className='prose prose-lg md:prose-xl prose-blockquote:border-abide-accent prose-blockquote:py-3 prose-blockquote:bg-abide-lighter text-justify dark:prose-invert dark:prose-blockquote:bg-abide-dark'>
             {post.content}
           </ReactMarkdown>
         </div>
@@ -86,7 +86,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
               For sure you will love these ones as well
             </p>
           </div>
-          <div className='my-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          <div className='my-10 grid lg:grid-cols-3 gap-6'>
             {nextPosts.map((post) => (
               <PostCard key={post.id} post={post} isSmall minimal />
             ))}

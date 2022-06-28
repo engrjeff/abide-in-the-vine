@@ -44,7 +44,12 @@ const Header = () => {
           </a>
         </Link>
         <NavLinks />
-        <MobileNav isMenuOpen={mobileMenuOpen} onThemeToggle={toggleTheme} isDark={isDark} />
+        <MobileNav
+          isMenuOpen={mobileMenuOpen}
+          onThemeToggle={toggleTheme}
+          isDark={isDark}
+          onLinkClick={toggleMobileMenu}
+        />
       </nav>
       <div className='flex items-center space-x-3 flex-1'>
         <button className='hidden lg:inline w-max text-white bg-abide-main rounded-full px-5 py-2 font-semibold hover:opacity-95 transition-opacity duration-200'>

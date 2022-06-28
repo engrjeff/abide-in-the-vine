@@ -6,16 +6,17 @@ interface MobileNavProps {
   isMenuOpen: boolean;
   onThemeToggle: () => void;
   isDark: boolean;
+  onLinkClick: () => void;
 }
 
-const MobileNav = ({ isMenuOpen, onThemeToggle, isDark }: MobileNavProps) => {
+const MobileNav = ({ isMenuOpen, onThemeToggle, isDark, onLinkClick }: MobileNavProps) => {
   return (
     <div
       className={`lg:hidden fixed top-20 left-0 w-full z-10 bg-white dark:bg-abide-darkestGray h-screen border-t dark:border-abide-darkGray transition duration-200 ease-out ${
         isMenuOpen ? "block" : "hidden"
       }`}
     >
-      <ul>
+      <ul onClick={onLinkClick}>
         {menuItems.map((menu) => (
           <li
             key={menu.label}
