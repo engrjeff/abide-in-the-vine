@@ -7,7 +7,7 @@ const HeroSection = () => {
       <h1 className='max-w-xl text-abide-dark dark:text-abide-light font-black text-5xl md:text-6xl text-center mb-10 leading-tight'>
         Having Christ as joy and finding joy in Christ
       </h1>
-      <p className='max-w-sm md:max-w-md text-gray-800 text-lg md:text-xl text-center mb-5 relative font-sans dark:text-abide-light'>
+      <p className='max-w-xs md:max-w-md text-gray-800 text-lg md:text-xl text-center mb-5 relative font-sans dark:text-abide-light'>
         <MdFormatQuote className='text-abide-accent rotate-180 text-5xl absolute -top-8 -left-5' />
         Abide in Me, and I in you. As the branch cannot bear fruit of itself,
         unless it abides in the vine, neither can you, unless you

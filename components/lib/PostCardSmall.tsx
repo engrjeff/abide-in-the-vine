@@ -7,7 +7,7 @@ import PostTag from "./PostTag";
 
 const PostCardSmall = ({ post }: { post: Post }) => {
   return (
-    <div className='grid grid-cols-2 gap-4'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
       <div className='aspect-video relative rounded-xl overflow-hidden'>
         <Image
           src={post.bannerUrl}
