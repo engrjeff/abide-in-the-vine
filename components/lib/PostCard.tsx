@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Post } from "@utils/types";
 
 import PostTag from "./PostTag";
-import { formatDate } from "@utils/helpers";
+import ByLine from "./ByLine";
 
 interface PostCardProps {
   post: Post;
@@ -14,7 +14,7 @@ interface PostCardProps {
 const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
   return (
     <div>
-      <div className='aspect-video relative mb-5 bg-center rounded-xl overflow-hidden'>
+      <div className='aspect-video relative bg-center rounded-xl overflow-hidden'>
         <Image
           src={post.bannerUrl}
           alt={post.banner.alternativeText || post.banner.caption}
@@ -25,8 +25,8 @@ const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
         />
       </div>
       {!minimal && (
-        <div className='flex flex-wrap gap-2'>
-          {post.tags.map((tag) => (
+        <div className='flex flex-wrap gap-2 mt-5'>
+          {post.tags.slice(0, 3).map((tag) => (
             <PostTag key={tag.id} tag={tag} />
           ))}
         </div>
@@ -34,7 +34,7 @@ const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
       <Link href={`/blogs/${post.slug}`}>
         <a
           className={`${
-            isSmall ? "text-2xl lg:text-3xl" : "text-3xl md:text-4xl"
+            isSmall ? "text-2xl" : "text-3xl md:text-4xl"
           } font-black text-abide-dark my-4 inline-block hover:underline dark:text-abide-light`}
         >
           {post.title}
@@ -50,27 +50,7 @@ const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
           >
             {post.description}
           </p>
-          <div className='flex items-center gap-4'>
-            <div className='aspect-square relative'>
-              <Image
-                src='/assets/me.jpg'
-                alt='test avatar image'
-                width={44}
-                height={44}
-                className='object-cover object-center rounded-full'
-              />
-            </div>
-            <div>
-              <p className='text-abide-dark font-extrabold dark:text-abide-light'>
-                Jeff Segovia
-              </p>
-              <div className='text-gray-700 text-sm space-x-2 dark:text-abide-mediumGray'>
-                <time>{formatDate(post.publishedAt)}</time>
-                {/* <span> &bull;</span> */}
-                {/* <span>12 min read</span> */}
-              </div>
-            </div>
-          </div>
+          <ByLine publishedAt={post.publishedAt} />
         </>
       )}
     </div>

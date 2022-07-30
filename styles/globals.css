@@ -2,10 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ddd;
+  }
+}
+
 @layer components {
   body {
     @apply selection:bg-abide-accent selection:text-white font-main scroll-smooth;
   }
+
   .btn {
     transition: transform 200ms ease-in;
     -webkit-backface-visibility: hidden;
@@ -107,6 +135,14 @@
   }
 
   .filter-tag.active {
+    @apply bg-abide-main ring-abide-main/80 text-white hover:ring-abide-main/80;
+  }
+
+  .post-filter-tag {
+    @apply bg-gray-200 text-gray-600 dark:bg-abide-darkGray dark:text-abide-light px-5 h-9 flex items-center font-semibold rounded-full duration-200 transition ring-gray-200 dark:ring-abide-darkGray dark:ring-offset-abide-darkestGray ring-offset-2 md:ring-offset-4 hover:ring-2 md:hover:ring-4;
+  }
+
+  .post-filter-tag.active {
     @apply bg-abide-main ring-abide-main/80 text-white hover:ring-abide-main/80;
   }
 

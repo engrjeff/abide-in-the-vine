@@ -9,10 +9,15 @@ interface MobileNavProps {
   onLinkClick: () => void;
 }
 
-const MobileNav = ({ isMenuOpen, onThemeToggle, isDark, onLinkClick }: MobileNavProps) => {
+const MobileNav = ({
+  isMenuOpen,
+  onThemeToggle,
+  isDark,
+  onLinkClick,
+}: MobileNavProps) => {
   return (
     <div
-      className={`lg:hidden fixed top-20 left-0 w-full z-10 bg-white dark:bg-abide-darkestGray h-screen border-t dark:border-abide-darkGray transition duration-200 ease-out ${
+      className={`mt-[60px] md:mt-[80px] lg:hidden fixed top-0 left-0 w-full z-10 bg-white dark:bg-abide-darkestGray h-screen border-t dark:border-abide-darkGray transition duration-200 ease-out ${
         isMenuOpen ? "block" : "hidden"
       }`}
     >
@@ -40,7 +45,11 @@ const MobileNav = ({ isMenuOpen, onThemeToggle, isDark, onLinkClick }: MobileNav
           onClick={onThemeToggle}
           className='px-8 py-4 border-2 border-abide-dark/50 dark:border-abide-darkGray dark:hover:bg-abide-darkGray/20 rounded-full flex items-center justify-center gap-3 text-abide-dark dark:text-abide-mediumGray'
         >
-          {isDark ? <SunIcon className='h-6 w-6' /> : <MoonIcon className='h-6 w-6' />}
+          {isDark ? (
+            <SunIcon className='h-6 w-6' />
+          ) : (
+            <MoonIcon className='h-6 w-6' />
+          )}
           Switch to {isDark ? "light" : "dark"} mode
         </button>
       </div>

@@ -29,8 +29,8 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className='px-6 lg:p-10 dark:bg-abide-darkestGray'>
-      <div className='container mx-auto grid md:grid-cols-4 gap-16 py-10 md:py-16 border-b dark:border-abide-dark'>
+    <footer className='lg:py-10 dark:bg-abide-darkestGray border-t'>
+      <div className='container grid md:grid-cols-4 gap-16 py-10 md:py-16 border-b dark:border-abide-dark'>
         {/* Short About */}
         <div className='col-span-2 space-y-4'>
           <div className='flex items-center'>

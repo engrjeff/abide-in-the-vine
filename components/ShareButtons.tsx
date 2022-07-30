@@ -8,7 +8,7 @@ const ShareButtons = () => {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
 
-  const blogURL = abide.siteUrl + router.asPath;
+  const blogURL = abide.canonicalUrl + router.asPath;
 
   return (
     <div className='h-12 flex items-center gap-x-4 mb-6'>

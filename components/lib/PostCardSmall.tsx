@@ -7,8 +7,8 @@ import PostTag from "./PostTag";
 
 const PostCardSmall = ({ post }: { post: Post }) => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-5 gap-y-4 md:gap-4'>
-      <div className='aspect-video relative col-span-2 rounded-xl overflow-hidden'>
+    <div className='grid grid-cols-2 gap-4'>
+      <div className='aspect-video relative rounded-xl overflow-hidden'>
         <Image
           src={post.bannerUrl}
           alt={post.banner.alternativeText || post.banner.caption}
@@ -18,9 +18,9 @@ const PostCardSmall = ({ post }: { post: Post }) => {
           blurDataURL={post.bannerUrl}
         />
       </div>
-      <div className='col-span-3 flex flex-col self-start gap-y-3'>
+      <div className='flex flex-col self-start gap-y-3'>
         <Link href={`/blogs/${post.slug}`}>
-          <a className='text-2xl lg:text-[22px] lg:leading-tight font-black text-abide-dark inline-block hover:underline dark:text-abide-light'>
+          <a className='text-2xl lg:text-lg lg:leading-tight font-black text-abide-dark inline-block hover:underline dark:text-abide-light'>
             {post.title}
           </a>
         </Link>

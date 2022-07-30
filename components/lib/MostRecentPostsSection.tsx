@@ -2,10 +2,11 @@ import PostCard from "./PostCard";
 import SectionTitle from "./SectionTitle";
 
 import type { Post } from "@utils/types";
+import Link from "next/link";
 
 const MostRecentPostsSection = ({ posts }: { posts: Post[] }) => {
   return (
-    <section className='container mx-auto p-4 lg:p-10 py-6'>
+    <section className='container py-6'>
       <SectionTitle title='Most Recent Posts' />
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12'>
         {posts.map((post) => (
@@ -13,7 +14,9 @@ const MostRecentPostsSection = ({ posts }: { posts: Post[] }) => {
         ))}
       </div>
       <div className='text-center my-12'>
-        <button className='btn-cta'>View More Posts</button>
+        <Link href='/blogs'>
+          <a className='btn-cta inline-block'>View More Posts</a>
+        </Link>
       </div>
     </section>
   );

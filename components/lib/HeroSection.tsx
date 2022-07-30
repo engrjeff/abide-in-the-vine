@@ -3,7 +3,7 @@ import { MdFormatQuote } from "react-icons/md";
 
 const HeroSection = () => {
   return (
-    <section className='flex flex-col items-center px-6 py-10'>
+    <section className='container flex flex-col items-center py-10'>
       <h1 className='max-w-xl text-abide-dark dark:text-abide-light font-black text-5xl md:text-6xl text-center mb-10 leading-tight'>
         Having Christ as joy and finding joy in Christ
       </h1>

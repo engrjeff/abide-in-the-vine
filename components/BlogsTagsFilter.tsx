@@ -17,14 +17,16 @@ const BlogsTagsFilter = (props: BlogsTagsFilterProps) => {
   };
 
   return (
-    <div className='flex md:gap-x-6 my-4 md:my-5 flex-col md:flex-row'>
-      <p className='filter-label mb-2 md:mb-0'>Tags</p>
-      <div className='flex gap-2 md:gap-3 flex-wrap'>
+    <div className='hidden md:gap-x-6 my-4 md:my-8 flex-col md:flex-row'>
+      <p className='text-abide-dark dark:text-abide-light font-bold mb-2 md:mb-0'>
+        Tags
+      </p>
+      <div className='flex gap-x-2 md:gap-x-3 gap-y-3 flex-wrap'>
         {tags.map((tag) => (
           <button
             aria-label={tag.name}
             key={tag.id}
-            className={`filter-tag ${
+            className={`post-filter-tag ${
               currentTags.includes(tag.name) ? "active" : ""
             }`}
             onClick={() => handleTagClick(tag.name)}
