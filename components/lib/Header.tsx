@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <header className='shadow-sm h-[60px] md:h-[84px] bg-white z-20 dark:bg-abide-darkestGray fixed top-0 inset-x-0 flex items-center'>
+    <header className='shadow-sm h-[64px] md:h-[84px] bg-white z-20 dark:bg-abide-darkestGray fixed top-0 inset-x-0 flex items-center'>
       <nav className='container flex justify-between'>
         <Link href='/'>
           <a className='flex items-center' aria-label='home'>

@@ -57,10 +57,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
         }}
       />
       <Header />
-      <main className='dark:bg-abide-darkestGray pt-4 mt-[60px] lg:mt-[84px]'>
+      <main className='dark:bg-abide-darkestGray pt-4 mt-[64px] lg:mt-[84px]'>
         {loading && (
           <div className='fixed inset-0 w-screen h-screen bg-black/50 z-20 flex justify-center'>
-            <CgSpinner className='h-10 w-10 text-abide-accent animate-spin mt-20' />
+            <CgSpinner className='h-10 w-10 text-abide-accent animate-spin mt-20 md:mt-24' />
           </div>
         )}
         {children}

@@ -83,7 +83,7 @@ const GospelPage: NextPage<GospelPageProps> = (props) => {
         <div className='max-w-4xl mx-auto my-10'>
           <div className='space-y-3'>
             <h4 className='text-3xl lg:text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
-              Want to know the Gospel more?,
+              Want to know the Gospel more?
             </h4>
             <p className='text-lg lg:text-xl text-zinc-700 font-semibold dark:text-abide-mediumGray'>
               Here are other posts about the Gospel
@@ -125,7 +125,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const postsWithGospelTags = nextPosts.filter((post) =>
     post.tags.some((tag) =>
-      ["Gospel", "Christ", "atonement"].includes(tag.name)
+      ["gospel", "Christ", "atonement"].includes(tag.name)
     )
   );
 

@@ -17,7 +17,7 @@ const MobileNav = ({
 }: MobileNavProps) => {
   return (
     <div
-      className={`mt-[60px] md:mt-[80px] lg:hidden fixed top-0 left-0 w-full z-10 bg-white dark:bg-abide-darkestGray h-screen border-t dark:border-abide-darkGray transition duration-200 ease-out ${
+      className={`mt-[61px] md:mt-[80px] lg:hidden fixed top-0 left-0 w-full z-30 bg-white dark:bg-abide-darkestGray h-screen border-t dark:border-abide-darkGray transition duration-200 ease-out ${
         isMenuOpen ? "block" : "hidden"
       }`}
     >
