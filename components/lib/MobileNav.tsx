@@ -35,7 +35,7 @@ const MobileNav = ({
           </li>
         ))}
         <li className='border-b hover:bg-gray-100 dark:hover:bg-abide-darkGray/20 dark:border-abide-darkGray'>
-          <Link href='/gospel'>
+          <Link href='/the-gospel'>
             <a className='container mx-auto flex p-6 text-lg'>The Gospel</a>
           </Link>
         </li>
