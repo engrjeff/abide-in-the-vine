@@ -6,7 +6,6 @@ import type { CMSPostResponse, Post } from "@utils/types";
 import { transformPostResponse } from "@utils/helpers";
 import { API_URL } from "@utils/constants";
 import PostCard from "@components/lib/PostCard";
-import { getPlaiceholder } from "plaiceholder";
 
 interface BlogsProps {
   posts: Post[];
@@ -51,18 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(`${API_URL}/api/posts?${query}`);
   const jsonDoc: CMSPostResponse = await response.json();
 
-  const postsData = transformPostResponse(jsonDoc);
-
-  const posts = await Promise.all(
-    postsData.map(async (post) => {
-      const { base64 } = await getPlaiceholder(post.bannerUrl);
-
-      return {
-        ...post,
-        blurImageUrl: base64,
-      };
-    })
-  ).then((values) => values);
+  const posts = transformPostResponse(jsonDoc);
 
   return {
     props: {

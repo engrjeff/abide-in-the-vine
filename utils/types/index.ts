@@ -11,7 +11,6 @@ export interface Post {
   banner: Banner;
   bannerId: string;
   bannerUrl: string;
-  blurImageUrl: string;
 }
 
 export interface PostResponse {

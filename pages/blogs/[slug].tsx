@@ -2,7 +2,6 @@ import type { NextPage, GetServerSideProps } from "next";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { ParsedUrlQuery } from "querystring";
-import { getPlaiceholder } from "plaiceholder";
 import qs from "qs";
 import ReactMarkdown from "react-markdown";
 import readingTime from "reading-time";
@@ -23,8 +22,6 @@ interface BlogPostProps {
 
 const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   const timeToRead = readingTime(post.content).text;
-
-  console.log(nextPosts);
 
   return (
     <>
@@ -50,7 +47,8 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
               By: Jeff Segovia
             </p>
             <div className='text-sm text-gray-600 dark:text-abide-mediumGray'>
-              <time>{formatDate(post.publishedAt)}</time> - <span>{timeToRead}</span>
+              <time>{formatDate(post.publishedAt)}</time> -{" "}
+              <span>{timeToRead}</span>
             </div>
           </div>
         </div>
@@ -62,7 +60,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
               layout='fill'
               className='object-cover object-center rounded-xl'
               placeholder='blur'
-              blurDataURL={post.blurImageUrl}
+              blurDataURL={post.bannerUrl}
             />
           </div>
           {/* {post.banner.caption && (
@@ -131,29 +129,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const response = await fetch(`${API_URL}/api/posts?${query}`);
   const jsonDoc: CMSPostResponse = await response.json();
-  const result = transformPostResponse(jsonDoc);
-
-  const currentPost = result[0];
-  const { base64 } = await getPlaiceholder(result[0].bannerUrl);
+  const currentPost = transformPostResponse(jsonDoc);
 
   const nextResponse = await fetch(`${API_URL}/api/posts?${nextQuery}`);
   const nextJsonDoc: CMSPostResponse = await nextResponse.json();
-  const nextResults = transformPostResponse(nextJsonDoc);
-
-  const nextPosts = await Promise.all(
-    nextResults.map(async (post) => {
-      const { base64 } = await getPlaiceholder(post.bannerUrl);
-
-      return {
-        ...post,
-        blurImageUrl: base64,
-      };
-    })
-  ).then((values) => values);
+  const nextPosts = transformPostResponse(nextJsonDoc);
 
   return {
     props: {
-      post: { ...currentPost, blurImageUrl: base64 },
+      post: currentPost[0],
       nextPosts,
     },
   };

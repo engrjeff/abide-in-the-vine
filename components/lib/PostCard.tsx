@@ -14,14 +14,14 @@ interface PostCardProps {
 const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
   return (
     <div>
-      <div className='aspect-video relative mb-5 bg-center rounded-xl'>
+      <div className='aspect-video relative mb-5 bg-center rounded-xl overflow-hidden'>
         <Image
           src={post.bannerUrl}
           alt={post.banner.alternativeText || post.banner.caption}
           layout='fill'
           className='object-cover object-center rounded-xl'
           placeholder='blur'
-          blurDataURL={post.blurImageUrl}
+          blurDataURL={post.bannerUrl}
         />
       </div>
       {!minimal && (
@@ -61,7 +61,9 @@ const PostCard = ({ isSmall, post, minimal = false }: PostCardProps) => {
               />
             </div>
             <div>
-              <p className='text-abide-dark font-extrabold dark:text-abide-light'>Jeff Segovia</p>
+              <p className='text-abide-dark font-extrabold dark:text-abide-light'>
+                Jeff Segovia
+              </p>
               <div className='text-gray-700 text-sm space-x-2 dark:text-abide-mediumGray'>
                 <time>{formatDate(post.publishedAt)}</time>
                 {/* <span> &bull;</span> */}

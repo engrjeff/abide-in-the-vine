@@ -29,8 +29,8 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className='container mx-auto px-6 lg:p-10 dark:bg-abide-darkestGray'>
-      <div className='grid md:grid-cols-4 gap-16 py-10 md:py-16 border-b dark:border-abide-dark'>
+    <footer className='px-6 lg:p-10 dark:bg-abide-darkestGray'>
+      <div className='container mx-auto grid md:grid-cols-4 gap-16 py-10 md:py-16 border-b dark:border-abide-dark'>
         {/* Short About */}
         <div className='col-span-2 space-y-4'>
           <div className='flex items-center'>
@@ -45,8 +45,9 @@ const Footer = () => {
             </span>
           </div>
           <p className='prose text-abide-dark ml-1 dark:text-abide-darkGray w-2/3'>
-            Abide in the Vine is a Christian organization which aims to glorify God by proclaiming
-            the truth that satisfaction and joy can only be found in Jesus Christ.
+            Abide in the Vine is a Christian organization which aims to glorify
+            God by proclaiming the truth that satisfaction and joy can only be
+            found in Jesus Christ.
           </p>
         </div>
         {/* Site Menu / Follow us */}
