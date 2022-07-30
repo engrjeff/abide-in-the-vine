@@ -43,7 +43,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         description={post.description}
         openGraph={ogTags}
       />
-      <article className='px-5 md:px-10 max-w-4xl mx-auto mt-2 md:mt-10'>
+      <article className='max-w-4xl mx-auto mt-2 md:mt-10'>
         <div className='space-y-3 flex flex-col'>
           <BackButton backToPath='/blogs' label='Back to Blogs' />
           <h1 className='text-3xl md:text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
@@ -76,7 +76,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         </div>
       </article>
       <hr className='my-10' />
-      <div className='px-5 md:px-10 max-w-4xl mx-auto my-10'>
+      <div className='max-w-4xl mx-auto my-10'>
         <div className='space-y-3'>
           <h4 className='text-3xl lg:text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
             If you like this article,

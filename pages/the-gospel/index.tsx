@@ -43,7 +43,7 @@ const GospelPage: NextPage<GospelPageProps> = (props) => {
         openGraph={ogTags}
       />
       <section className='container'>
-        <article className='px-5 md:px-10 max-w-4xl mx-auto mt-2 md:mt-10 flex flex-col'>
+        <article className='max-w-4xl mx-auto mt-2 md:mt-10 flex flex-col'>
           <BackButton backToPath='/' label='Back to Home' />
           <h1 className='text-abide-dark dark:text-abide-light text-4xl font-extrabold my-6'>
             The Gospel of Jesus Christ
@@ -80,7 +80,7 @@ const GospelPage: NextPage<GospelPageProps> = (props) => {
           ))}
         </article>
         <hr className='my-10' />
-        <div className='px-5 md:px-10 max-w-4xl mx-auto my-10'>
+        <div className='max-w-4xl mx-auto my-10'>
           <div className='space-y-3'>
             <h4 className='text-3xl lg:text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
               Want to know the Gospel more?,
