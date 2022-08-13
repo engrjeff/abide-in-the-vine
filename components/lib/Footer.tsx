@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
             ))}
             <li>
-              <Link href='/gospel'>
+              <Link href='/the-gospel'>
                 <a className='text-gray-700 hover:text-abide-main transition-colors duration-300 dark:text-abide-darkGray dark:hover:text-abide-main'>
                   The Gospel
                 </a>

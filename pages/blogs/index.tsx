@@ -1,6 +1,7 @@
 import type { NextPage, GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import qs from "qs";
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 
 import type { CMSPostResponse, CMSTagResponse, Post, Tag } from "@utils/types";
 import { transformPostResponse, transformTagResponse } from "@utils/helpers";
@@ -8,20 +9,49 @@ import { API_URL } from "@utils/constants";
 import PostCard from "@components/lib/PostCard";
 import BlogsTagsFilter from "@components/BlogsTagsFilter";
 import { useState } from "react";
+import { fetchPosts, fetchTags } from "api/fetchFunctions";
 
 interface BlogsProps {
   posts: Post[];
   tags: Tag[];
 }
 
-const BlogsPage: NextPage<BlogsProps> = ({ posts, tags }) => {
+const BlogsPage: NextPage = () => {
+  const [page, setPage] = useState(1);
+
+  const limit = page * 6;
+  const start = 0;
+
+  const {
+    data: postData,
+    isFetching,
+    isPreviousData,
+  } = useQuery(["posts", page], () => fetchPosts(start, limit), {
+    keepPreviousData: true,
+    staleTime: Infinity,
+  });
+
+  const { data: tagsData } = useQuery(["tags"], fetchTags);
+
   const [tagFilters, setTagFilters] = useState<string[]>([]);
 
+  const tags = tagsData ? tagsData : [];
+
+  const posts = postData ? postData : [];
+
+  console.log(posts.length);
   const filteredPosts =
     tagFilters.length > 0
-      ? posts.filter((p) => p.tags.some((tag) => tagFilters.includes(tag.name)))
+      ? posts?.filter((p) =>
+          p.tags.some((tag) => tagFilters.includes(tag.name))
+        )
       : posts;
 
+  const handleLoadMore = () => {
+    if (!isPreviousData) {
+      setPage((p) => p + 1);
+    }
+  };
   return (
     <>
       <NextSeo title='Blogs - Abide in the Vine' />
@@ -46,7 +76,9 @@ const BlogsPage: NextPage<BlogsProps> = ({ posts, tags }) => {
           ))}
         </div>
         <div className='mt-20 text-center'>
-          <button className='btn-cta'>Load More Posts</button>
+          <button className='btn-cta' onClick={handleLoadMore}>
+            {isFetching ? "Loading..." : "Load More Posts"}
+          </button>
         </div>
       </section>
     </>
@@ -54,32 +86,14 @@ const BlogsPage: NextPage<BlogsProps> = ({ posts, tags }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const query = qs.stringify(
-    {
-      fields: ["title", "slug", "description", "publishedAt"],
-      populate: ["tags", "banner"],
-      sort: ["publishedAt:desc"],
-      pagination: {
-        start: 0,
-        limit: 9,
-      },
-    },
-    { encodeValuesOnly: true }
-  );
+  const queryClient = new QueryClient();
 
-  const response = await fetch(`${API_URL}/api/posts?${query}`);
-  const jsonDoc: CMSPostResponse = await response.json();
-
-  const posts = transformPostResponse(jsonDoc);
-
-  const tagResponse = await fetch(`${API_URL}/api/tags?sort=createdAt:desc`);
-  const tagsJsonDoc: CMSTagResponse = await tagResponse.json();
-  const tags = transformTagResponse(tagsJsonDoc);
+  await queryClient.prefetchQuery(["posts", 1], () => fetchPosts(0, 6));
+  await queryClient.prefetchQuery(["tags"], fetchTags);
 
   return {
     props: {
-      posts,
-      tags,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 };
