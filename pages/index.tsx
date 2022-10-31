@@ -1,18 +1,12 @@
-import type { NextPage, GetServerSideProps } from "next";
-import qs from "qs";
+import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import type { CMSPostResponse, Post } from "@utils/types";
-import { transformPostResponse } from "@utils/helpers";
-import { API_URL } from "@utils/constants";
+import HeroSection from '@components/lib/HeroSection';
+import FeaturedPostsSection from '@components/lib/FeaturedPostsSection';
+import MostRecentPostsSection from '@components/lib/MostRecentPostsSection';
+import getSortedPosts from '@api/contentFetchFunctions';
+import type { PostWithoutBody } from '@api/contentFetchFunctions';
 
-import HeroSection from "@components/lib/HeroSection";
-import FeaturedPostsSection from "@components/lib/FeaturedPostsSection";
-import MostRecentPostsSection from "@components/lib/MostRecentPostsSection";
-
-interface HomeProps {
-  featuredPosts: Post[];
-  recentPosts: Post[];
-}
+type HomeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const Home: NextPage<HomeProps> = (props) => {
   const { featuredPosts, recentPosts } = props;
@@ -25,27 +19,12 @@ const Home: NextPage<HomeProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const query = qs.stringify(
-    {
-      fields: ["title", "description", "publishedAt", "slug"],
-      populate: ["tags", "banner"],
-      sort: ["publishedAt:desc"],
-      pagination: {
-        start: 0,
-        limit: 11,
-      },
-    },
-    { encodeValuesOnly: true }
-  );
-
-  const response = await fetch(`${API_URL}/api/posts?${query}`);
-  const jsonDoc: CMSPostResponse = await response.json();
-
-  const posts = transformPostResponse(jsonDoc);
-
-  const featuredPosts = posts.slice(0, 5);
-  const recentPosts = posts.slice(5);
+export const getServerSideProps: GetServerSideProps<{
+  featuredPosts: PostWithoutBody[];
+  recentPosts: PostWithoutBody[];
+}> = async (context) => {
+  const featuredPosts = await getSortedPosts(0, 5);
+  const recentPosts = await getSortedPosts(5, 11);
 
   return {
     props: {

@@ -1,16 +1,17 @@
-import PostCard from "./PostCard";
-import SectionTitle from "./SectionTitle";
+import Link from 'next/link';
 
-import type { Post } from "@utils/types";
-import Link from "next/link";
+import PostCard from './PostCard';
+import SectionTitle from './SectionTitle';
 
-const MostRecentPostsSection = ({ posts }: { posts: Post[] }) => {
+import { PostWithoutBody } from '@api/contentFetchFunctions';
+
+const MostRecentPostsSection = ({ posts }: { posts: PostWithoutBody[] }) => {
   return (
     <section className='container py-6'>
       <SectionTitle title='Most Recent Posts' />
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12'>
         {posts.map((post) => (
-          <PostCard key={post.id} isSmall post={post} />
+          <PostCard key={post._id} isSmall post={post} />
         ))}
       </div>
       <div className='text-center my-12'>

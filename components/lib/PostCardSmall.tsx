@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import type { Post } from "@utils/types";
+import type { PostWithoutBody } from '@api/contentFetchFunctions';
 
-import PostTag from "./PostTag";
+import PostTag from './PostTag';
 
-const PostCardSmall = ({ post }: { post: Post }) => {
+const PostCardSmall = ({ post }: { post: PostWithoutBody }) => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
       <div className='aspect-video relative rounded-xl overflow-hidden'>
         <Image
           src={post.bannerUrl}
-          alt={post.banner.alternativeText || post.banner.caption}
+          alt={post.title}
           layout='fill'
           className='object-cover object-center'
           placeholder='blur'
@@ -26,7 +26,7 @@ const PostCardSmall = ({ post }: { post: Post }) => {
         </Link>
         <div className='mt-auto flex gap-2 flex-wrap'>
           {post.tags.map((tag) => (
-            <PostTag key={tag.id} tag={tag} />
+            <PostTag key={tag} tag={tag} />
           ))}
         </div>
       </div>

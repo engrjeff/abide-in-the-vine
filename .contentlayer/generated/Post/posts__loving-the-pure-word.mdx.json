@@ -1,0 +1,26 @@
+{
+  "title": "Loving the Pure Word",
+  "description": "In this modern times where the world offers us pleasures, will our heart still resolve to love the pure word of God?",
+  "bannerUrl": "https://res.cloudinary.com/abide-in-the-vine/image/upload/v1651845824/bible_23bc9eb591.jpg",
+  "tags": [
+    "word of God",
+    "Bible"
+  ],
+  "publishedAt": "May 06, 2022",
+  "body": {
+    "raw": "\n> Your word is very pure;\n> Therefore Your servant loves it.\n> **Psalms 119:140**\n\nIt is quite fascinating how God turns a radically depraved heart that loves corruption into a heart that loves His pure word. A spiritually dead person is carnally-minded. His mind is not subject to God's Law, indeed it cannot (Romans 8:7). Thus, to be able to love the pure word of God requires a supernatural work of God Himself.\n\nThe Lord did wonderful things for us and in us. But such wondrous works are not an end. Rather those are means in order for us to love Him and His word, that is, to make much of Him. He didn't save to teach us to be self-centered but to look away from ourselves and to Him. A truly saved person can see the purity of God's word and resolves to love it. Indeed, it is an amazing work of God to change a man from being a rebel to a man who lovingly delights in Him.\n\nHow about you, do you love the pure word of God?\n",
+    "code": "var Component=(()=>{var c=Object.create;var s=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var w=(o,e)=>()=>(e||o((e={exports:{}}).exports,e),e.exports),b=(o,e)=>{for(var r in e)s(o,r,{get:e[r],enumerable:!0})},i=(o,e,r,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let n of m(e))!f.call(o,n)&&n!==r&&s(o,n,{get:()=>e[n],enumerable:!(a=h(e,n))||a.enumerable});return o};var v=(o,e,r)=>(r=o!=null?c(p(o)):{},i(e||!o||!o.__esModule?s(r,\"default\",{value:o,enumerable:!0}):r,o)),g=o=>i(s({},\"__esModule\",{value:!0}),o);var l=w((k,d)=>{d.exports=_jsx_runtime});var x={};b(x,{default:()=>j,frontmatter:()=>y});var t=v(l()),y={title:\"Loving the Pure Word\",description:\"In this modern times where the world offers us pleasures, will our heart still resolve to love the pure word of God?\",publishedAt:\"May 06, 2022\",tags:[\"word of God\",\"Bible\"],bannerUrl:\"https://res.cloudinary.com/abide-in-the-vine/image/upload/v1651845824/bible_23bc9eb591.jpg\"};function u(o){let e=Object.assign({blockquote:\"blockquote\",p:\"p\",strong:\"strong\"},o.components);return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsxs)(e.blockquote,{children:[`\n`,(0,t.jsxs)(e.p,{children:[`Your word is very pure;\nTherefore Your servant loves it.\n`,(0,t.jsx)(e.strong,{children:\"Psalms 119:140\"})]}),`\n`]}),`\n`,(0,t.jsx)(e.p,{children:\"It is quite fascinating how God turns a radically depraved heart that loves corruption into a heart that loves His pure word. A spiritually dead person is carnally-minded. His mind is not subject to God's Law, indeed it cannot (Romans 8:7). Thus, to be able to love the pure word of God requires a supernatural work of God Himself.\"}),`\n`,(0,t.jsx)(e.p,{children:\"The Lord did wonderful things for us and in us. But such wondrous works are not an end. Rather those are means in order for us to love Him and His word, that is, to make much of Him. He didn't save to teach us to be self-centered but to look away from ourselves and to Him. A truly saved person can see the purity of God's word and resolves to love it. Indeed, it is an amazing work of God to change a man from being a rebel to a man who lovingly delights in Him.\"}),`\n`,(0,t.jsx)(e.p,{children:\"How about you, do you love the pure word of God?\"})]})}function H(o={}){let{wrapper:e}=o.components||{};return e?(0,t.jsx)(e,Object.assign({},o,{children:(0,t.jsx)(u,o)})):u(o)}var j=H;return g(x);})();\n;return Component;"
+  },
+  "_id": "posts/loving-the-pure-word.mdx",
+  "_raw": {
+    "sourceFilePath": "posts/loving-the-pure-word.mdx",
+    "sourceFileName": "loving-the-pure-word.mdx",
+    "sourceFileDir": "posts",
+    "contentType": "mdx",
+    "flattenedPath": "posts/loving-the-pure-word"
+  },
+  "type": "Post",
+  "slug": "loving-the-pure-word",
+  "url": "/blogs/loving-the-pure-word",
+  "timeToRead": "1 min read"
+}
