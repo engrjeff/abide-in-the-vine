@@ -4,7 +4,9 @@
 
 @layer base {
   html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
+    @apply scroll-smooth scroll-p-24 md:scroll-p-28;
   }
 
   /* width */
@@ -73,7 +75,7 @@
   }
 
   .nav-link.nav-active::after {
-    content: "";
+    content: '';
     @apply absolute h-[3px] rounded-md bg-abide-accent w-[60%] -bottom-2 left-1/2 -translate-x-1/2 duration-200 transition-transform;
   }
 
