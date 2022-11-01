@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { NextPage, GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -11,7 +11,7 @@ import ShareButtons from '@components/ShareButtons';
 import ByLine from '@components/lib/ByLine';
 import getSortedPosts, { getPostBySlug, PostWithoutBody } from '@api/contentFetchFunctions';
 
-type BlogPostProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type BlogPostProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   const MDXContent = useMDXComponent(post.body.code);
@@ -73,7 +73,20 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getSortedPosts();
+
+  return {
+    paths: posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<{
   post: Post;
   nextPosts: PostWithoutBody[];
 }> = async (context) => {
