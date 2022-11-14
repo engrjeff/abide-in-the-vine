@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps<{
   recentPosts: PostWithoutBody[];
 }> = async (context) => {
   const featuredPosts = await getSortedPosts(0, 5);
-  const recentPosts = await getSortedPosts(5, 11);
+  const recentPosts = await getSortedPosts(5, 8);
 
   return {
     props: {

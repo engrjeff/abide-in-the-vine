@@ -11,19 +11,23 @@ import BlogsTagsFilter from '@components/BlogsTagsFilter';
 
 type BlogsPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
+const postsPerPage = 6;
+
 const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
   const [page, setPage] = useState(0);
   const [tagFilters, setTagFilters] = useState<string[]>([]);
 
-  let filteredPosts = posts.slice(0, 6 * (page + 1));
+  let filteredPosts = posts.slice(0, postsPerPage * (page + 1));
 
   filteredPosts =
     tagFilters.length === 0
       ? filteredPosts
       : filteredPosts.filter((p) => p.tags.some((t) => tagFilters.includes(t)));
 
+  const allPostsDisplayed = posts.length === filteredPosts.length;
+
   const handleLoadMore = () => {
-    if (page * 6 >= posts.length) return;
+    if (page * postsPerPage >= posts.length) return;
 
     setPage((p) => p + 1);
   };
@@ -45,11 +49,13 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
             <PostCard key={post._id} post={post} isSmall />
           ))}
         </div>
-        <div className='mt-20 text-center'>
-          <button className='btn-cta' onClick={handleLoadMore}>
-            Load More Posts
-          </button>
-        </div>
+        {!allPostsDisplayed && (
+          <div className='mt-20 text-center'>
+            <button className='btn-cta' onClick={handleLoadMore}>
+              Load More Posts
+            </button>
+          </div>
+        )}
       </section>
     </>
   );
