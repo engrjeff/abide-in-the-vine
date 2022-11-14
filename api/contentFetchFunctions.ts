@@ -9,10 +9,7 @@ export type PostWithoutBody = Omit<Post, 'body'>;
  * @param n the number of posts to return
  * @returns Post array without body
  */
-export default async function getSortedPosts(
-  start: number = 0,
-  n?: number
-): Promise<PostWithoutBody[]> {
+export default function getSortedPosts(start: number = 0, n?: number): PostWithoutBody[] {
   return allPosts
     .sort((a, b) => {
       return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));

@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import { SearchIcon, MoonIcon, SunIcon } from "@heroicons/react/outline";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 
-import NavLinks from "./NavLinks";
-import MobileMenuButton from "./MobileMenuButton";
-import MobileNav from "./MobileNav";
-import ArticleScrollIndicator from "./ArticleScrollIndicator";
+import NavLinks from './NavLinks';
+import MobileMenuButton from './MobileMenuButton';
+import MobileNav from './MobileNav';
+import ArticleScrollIndicator from './ArticleScrollIndicator';
+import Search from './Search';
 
 const Header = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,11 +21,11 @@ const Header = () => {
 
   if (!mounted) return null;
 
-  const isDark = theme === "dark";
-  const toggleTheme = () => setTheme(isDark ? "light" : "dark");
+  const isDark = theme === 'dark';
+  const toggleTheme = () => setTheme(isDark ? 'light' : 'dark');
 
   const toggleMobileMenu = () => {
-    document.body.classList.toggle("overflow-hidden");
+    document.body.classList.toggle('overflow-hidden');
     setMobileMenuOpen((prev) => !prev);
   };
 
@@ -57,27 +58,15 @@ const Header = () => {
               The Gospel
             </a>
           </Link>
-          <button
-            aria-label='search'
-            className='p-2 rounded-full text-abide-dark dark:text-abide-light lg:text-gray-500 dark:lg:text-gray-500 hover:bg-gray-100 dark:hover:bg-abide-dark dark:hover:text-abide-light transition-colors duration-300'
-          >
-            <SearchIcon className='h-5 w-5 lg:h-6 lg:w-6' />
-          </button>
+          <Search />
           <button
             aria-label='switch theme'
             onClick={toggleTheme}
             className='hidden lg:block p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-abide-dark dark:hover:text-abide-light transition-colors duration-300'
           >
-            {isDark ? (
-              <SunIcon className='h-6 w-6' />
-            ) : (
-              <MoonIcon className='h-6 w-6' />
-            )}
+            {isDark ? <SunIcon className='h-6 w-6' /> : <MoonIcon className='h-6 w-6' />}
           </button>
-          <MobileMenuButton
-            onMenuToggle={toggleMobileMenu}
-            isMenuOpen={mobileMenuOpen}
-          />
+          <MobileMenuButton onMenuToggle={toggleMobileMenu} isMenuOpen={mobileMenuOpen} />
         </div>
       </nav>
       <ArticleScrollIndicator />
