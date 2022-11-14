@@ -33,8 +33,6 @@ function SearchDialog({ onClose, visible }: SearchDialogProps) {
     }
   }, []);
 
-  console.log(recentSearches);
-
   const clearSearch = () => setSearch('');
 
   const saveRecentSearch = (title: string, url: string) => {
@@ -82,8 +80,8 @@ function SearchDialog({ onClose, visible }: SearchDialogProps) {
                 type='text'
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder='Search'
-                className='bg-transparent px-2 py-2 flex-1 outline-0'
+                placeholder='Search by post title or tags'
+                className='bg-transparent px-2 py-2 flex-1 outline-0 placeholder:text-gray-300 dark:placeholder:text-abide-gray'
               />
               {Boolean(search) && (
                 <button
