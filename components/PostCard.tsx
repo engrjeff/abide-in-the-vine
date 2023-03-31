@@ -11,7 +11,9 @@ function PostCard({
   post: PostWithoutBody;
   simple?: boolean;
 }) {
-  const contentClasses = cn("space-y-6 p-8", { "p-0 py-4": simple });
+  const contentClasses = cn("space-y-4 md:space-y-6 p-8", {
+    "p-0 py-4": simple,
+  });
 
   return (
     <div className='group w-full bg-white dark:bg-brand-coolnavy900 dark:ring-offset-brand-coolnavy900'>
@@ -30,7 +32,7 @@ function PostCard({
         <div className='absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/50'></div>
       </Link>
       <div className={contentClasses}>
-        <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
+        <span className='py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
           {post.tags.join(" , ")}
         </span>
         <div className='space-y-3'>

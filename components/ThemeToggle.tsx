@@ -19,7 +19,7 @@ function ThemeToggle() {
       {isDark ? (
         <SunIcon className='h-5 w-5' />
       ) : (
-        <MoonIcon className='h-4 w-4' />
+        <MoonIcon className='h-5 w-5' />
       )}
     </button>
   );
