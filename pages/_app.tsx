@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
-import Head from "next/head";
+import { NextSeo } from 'next-seo';
 
 import Header from "../components/Header";
 import { abide } from "@utils/constants";
@@ -13,12 +13,29 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div
         className={`font-sans text-brand-black dark:bg-brand-coolnavy900 dark:text-white`}
       >
-        <Head>
-          <title>
-            Abide in the Vine - Finding yoy in Christ and having Christ as joy
-          </title>
-          <meta name='description' content={abide.desc} />
-        </Head>
+        <NextSeo
+          title='Abide in the Vine'
+          description={abide.desc}
+          canonical={abide.siteUrl}
+          facebook={{ appId: abide.fbAppId }}
+          openGraph={{
+            url: abide.canonicalUrl,
+            title: "Abide in the Vine",
+            description: abide.desc,
+            site_name: "Abide in the Vine",
+            images: [
+              {
+                url: abide.bannerUrl,
+                alt: "Abide in the Vine",
+              },
+            ],
+          }}
+          twitter={{
+            handle: "@engrjeffsegovia",
+            site: "Abide in the Vine",
+            cardType: "summary_large_image",
+          }}
+        />
         <Header />
         <main>
           <Component {...pageProps} />
