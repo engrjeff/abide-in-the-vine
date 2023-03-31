@@ -2,6 +2,7 @@
   "name": "Abide in the Vine",
   "display": "standalone",
   "short_name": "Abide",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
