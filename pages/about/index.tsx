@@ -17,7 +17,7 @@ const AboutPage: NextPage = () => {
           </div>
         </div>
       </div>
-      <section className='container max-w-4xl py-20'>
+      <section className='container max-w-4xl py-10 md:py-20'>
         <h1 className='my-6 text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
           About Us
         </h1>

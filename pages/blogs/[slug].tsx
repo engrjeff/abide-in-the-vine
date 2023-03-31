@@ -74,11 +74,11 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         </div>
         <ShareButtons />
       </div>
-      <article className='prose mx-auto px-4 py-10 font-article dark:prose-invert lg:prose-xl prose-blockquote:border-brand-primary md:px-0 md:text-justify'>
+      <article className='prose prose-lg mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-blockquote:border-brand-primary md:px-0 md:text-justify'>
         <MDXContent />
       </article>
 
-      <div className='container mb-20 max-w-4xl space-y-4 border-t border-slate-700 pt-10'>
+      <div className='container mb-20 max-w-4xl space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
         <h2 className='text-2xl font-extrabold'>
           <span>Related Articles</span>
         </h2>

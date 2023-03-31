@@ -42,7 +42,7 @@ function Header() {
     <header className={headerClasses}>
       <Link
         href='/'
-        className='flex items-center gap-4 text-sm font-bold md:text-xl'
+        className='flex items-center gap-4 text-lg font-bold md:text-xl'
       >
         <Image
           src='/abide-logo.png'

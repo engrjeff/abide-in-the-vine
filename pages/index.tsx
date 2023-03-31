@@ -52,7 +52,7 @@ const HomePage: NextPage<HomeProps> = (props) => {
         </h2>
         <p className='mb-6 text-lg'>Our Lord Jesus Christ Himself said,</p>
         <blockquote className='space-y-6 font-article'>
-          <p className='text-center! max-w-[65ch] text-2xl'>
+          <p className='max-w-[65ch] text-xl md:text-2xl'>
             Abide in Me, and I in you. As the branch cannot bear fruit of
             itself, unless it abides in the vine, neither can you, unless you
             abide in Me.
