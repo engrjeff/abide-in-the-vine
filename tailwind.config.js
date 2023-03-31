@@ -21,10 +21,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-poppins)", ...fontFamily.sans],
-        main: ["Lato", "sans-serif"],
-        quote: ["Great Vibes", "cursive"],
-        article: ["var(--font-ptserif)", "var(--font-poppins)"],
+        sans: ["Poppins", ...fontFamily.sans],
+        article: ["PT Serif", "Poppins"],
       },
 
       colors: {
