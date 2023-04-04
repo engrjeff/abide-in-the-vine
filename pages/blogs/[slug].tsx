@@ -74,7 +74,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         </div>
         <ShareButtons />
       </div>
-      <article className='prose prose-lg mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-blockquote:border-brand-primary md:px-0 md:text-justify'>
+      <article className='prose prose-lg prose-quoteless mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-brand-primary md:px-0 md:text-justify'>
         <MDXContent />
       </article>
 

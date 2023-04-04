@@ -24,7 +24,14 @@ module.exports = {
         sans: ["Poppins", ...fontFamily.sans],
         article: ["PT Serif", "Poppins"],
       },
-
+      typography: {
+        quoteless: {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
+      },
       colors: {
         abide: {
           main: "#547726",
