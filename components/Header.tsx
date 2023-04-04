@@ -59,7 +59,7 @@ function Header() {
       <div className='ml-auto flex items-center space-x-4 justify-self-end'>
         <Link
           href='/the-gospel'
-          className='hidden rounded-full bg-brand-primary bg-opacity-95 px-6 py-2 font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm md:inline'
+          className='hidden rounded-full bg-brand-primary bg-opacity-95 px-6 py-2 font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm lg:inline'
         >
           The Gospel
         </Link>
