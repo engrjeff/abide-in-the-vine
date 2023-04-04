@@ -3,7 +3,7 @@ import NavLink from "./NavLink";
 
 function NavLinks() {
   return (
-    <nav className='hidden md:block'>
+    <nav className='hidden lg:block'>
       <ul className='flex items-center justify-center space-x-8'>
         {menuItems.map((navLink) => (
           <li key={navLink.label}>
