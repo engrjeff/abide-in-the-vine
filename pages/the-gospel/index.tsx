@@ -54,14 +54,14 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
           </div>
         </div>
       </div>
-      <div className='container max-w-4xl pt-10'>
+      <div className='container max-w-5xl pt-10'>
         <BackButton backToPath='/blogs' label='back to blogs' />
         <ShareButtons />
       </div>
       <article className='prose prose-lg mx-auto px-5 py-10 text-justify font-article dark:prose-invert lg:prose-xl prose-blockquote:border-brand-primary md:px-0'>
         <MDXContent components={{ BannerImage }} />
       </article>
-      <div className='container mb-20 max-w-4xl space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
+      <div className='container mb-20 max-w-5xl space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
         <h2 className='text-2xl font-extrabold'>
           <span>Related Articles</span>
         </h2>
