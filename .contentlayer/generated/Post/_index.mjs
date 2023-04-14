@@ -15,8 +15,9 @@ import posts__returningToGodSGloryMdx from './posts__returning-to-god-s-glory.md
 import posts__theGospelOfPeaceMdx from './posts__the-gospel-of-peace.mdx.json' assert { type: 'json' }
 import posts__theMercyOfGodForASinnerMdx from './posts__the-mercy-of-god-for-a-sinner.mdx.json' assert { type: 'json' }
 import posts__theNecessityOfTheAtonementMdx from './posts__the-necessity-of-the-atonement.mdx.json' assert { type: 'json' }
+import posts__theThirstySaviorMdx from './posts__the-thirsty-savior.mdx.json' assert { type: 'json' }
 import posts__whatWeShareTheMostIsWhatIsMostPreciousToUsMdx from './posts__what-we-share-the-most-is-what-is-most-precious-to-us.mdx.json' assert { type: 'json' }
 import posts__whyThePrinceOfPeaceMdx from './posts__why-the-prince-of-peace.mdx.json' assert { type: 'json' }
-import posts__theThirstySaviorMdx from './posts__the-thirsty-savior.mdx.json' assert { type: 'json' }
+import posts__theUprightWillBeholdHisFaceMdx from './posts__the-upright-will-behold-his-face.mdx.json' assert { type: 'json' }
 
-export const allPosts = [posts__aCallToReturnMdx, posts__christSResurrectionAndOurJustificationMdx, posts__concerningHimselfMdx, posts__darkenedNoMoreMdx, posts__howCanIBeRightWithGodMdx, posts__iAmTheGoodShepherdMdx, posts__iAmTheWayTheTruthAndTheLifeMdx, posts__lookBehindThenLookToChristMdx, posts__lovingThePureWordMdx, posts__onTheResurrectionOfChristMdx, posts__ourPatientGodMdx, posts__returningToGodSGloryMdx, posts__theGospelOfPeaceMdx, posts__theMercyOfGodForASinnerMdx, posts__theNecessityOfTheAtonementMdx, posts__whatWeShareTheMostIsWhatIsMostPreciousToUsMdx, posts__whyThePrinceOfPeaceMdx, posts__theThirstySaviorMdx]
+export const allPosts = [posts__aCallToReturnMdx, posts__christSResurrectionAndOurJustificationMdx, posts__concerningHimselfMdx, posts__darkenedNoMoreMdx, posts__howCanIBeRightWithGodMdx, posts__iAmTheGoodShepherdMdx, posts__iAmTheWayTheTruthAndTheLifeMdx, posts__lookBehindThenLookToChristMdx, posts__lovingThePureWordMdx, posts__onTheResurrectionOfChristMdx, posts__ourPatientGodMdx, posts__returningToGodSGloryMdx, posts__theGospelOfPeaceMdx, posts__theMercyOfGodForASinnerMdx, posts__theNecessityOfTheAtonementMdx, posts__theThirstySaviorMdx, posts__whatWeShareTheMostIsWhatIsMostPreciousToUsMdx, posts__whyThePrinceOfPeaceMdx, posts__theUprightWillBeholdHisFaceMdx]

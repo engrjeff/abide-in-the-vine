@@ -14,7 +14,7 @@ const ShareButtons = () => {
     <div className='mt-2 flex h-12 items-center gap-x-4'>
       <a
         aria-label='Share to Facebook'
-        className='cursor-pointer text-gray-300 transition-colors duration-200 hover:text-[#1877f2]'
+        className='cursor-pointer text-gray-400 transition-colors duration-200 hover:text-[#1877f2]'
         href={`https://www.facebook.com/sharer/sharer.php?u=${blogURL}`}
       >
         <svg
@@ -28,7 +28,7 @@ const ShareButtons = () => {
       </a>
       <a
         aria-label='Share to Twitter'
-        className='cursor-pointer text-gray-300 transition-colors duration-200 hover:text-[#1da1f2]'
+        className='cursor-pointer text-gray-400 transition-colors duration-200 hover:text-[#1da1f2]'
         href={`https://twitter.com/intent/tweet?url=${blogURL}`}
       >
         <svg
@@ -43,7 +43,7 @@ const ShareButtons = () => {
       <CopyToClipboard text={blogURL} onCopy={() => setCopied(true)}>
         <button
           aria-label='Copy Link'
-          className='text-gray-300 transition-colors duration-200 hover:text-abide-dark dark:hover:text-brand-primary'
+          className='text-gray-400 transition-colors duration-200 hover:text-abide-dark dark:hover:text-brand-primary'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

@@ -44,7 +44,7 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
               {tags.map((tag) => (
                 <button
                   key={tag}
-                  className='bg-gray-200 px-3 py-2 text-xs uppercase text-gray-700 hover:bg-gray-300 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-950 md:text-sm'
+                  className='bg-gray-200 px-3 py-2 text-xs uppercase text-gray-700 hover:bg-gray-300 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-950 md:text-sm'
                 >
                   {tag}
                 </button>

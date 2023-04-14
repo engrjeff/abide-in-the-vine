@@ -19,18 +19,10 @@ function Header() {
     setMobileMenuOpen((prev) => !prev);
   };
 
-  const headerClasses = cn(
-    "flex md:grid md:grid-cols-3 items-center px-3 lg:px-16 shadow sticky top-0 py-4 z-30 bg-white transition-all dark:bg-brand-coolnavy900 dark:text-white dark:border-b dark:border-slate-700",
-    {
-      "h-20 md:h-32": onTop,
-      "h-20": !onTop,
-    }
-  );
-
   useEffect(() => {
     const scrollCallback = () => {
       const scrolledFromTop = window.scrollY;
-      setOnTop(scrolledFromTop <= 0);
+      setOnTop(scrolledFromTop <= 100);
     };
     window.addEventListener("scroll", scrollCallback);
     return () => {
@@ -39,7 +31,15 @@ function Header() {
   }, []);
 
   return (
-    <header className={headerClasses}>
+    <header
+      className={cn(
+        "backdrop-blur-md flex md:grid md:grid-cols-3 items-center px-3 lg:px-16 shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-brand-coolnavy900/90 dark:text-white dark:border-b dark:border-brand-coolnavy800",
+        {
+          "h-20 md:h-32": onTop,
+          "h-20": !onTop,
+        }
+      )}
+    >
       <Link
         href='/'
         className='flex items-center gap-4 text-lg font-bold md:text-xl'

@@ -3,7 +3,7 @@ import Link from "next/link";
 function HeroImage() {
   return (
     <div className='relative'>
-      <div className='h-[500px] w-full bg-hero bg-cover bg-center bg-no-repeat text-white md:h-[600px]'>
+      <div className='h-[500px] w-full bg-hero bg-cover bg-center bg-no-repeat text-white md:h-[700px]'>
         <div className='absolute inset-0 flex flex-col items-center justify-center gap-8 bg-black/80 p-8'>
           <h1 className='text-center text-[40px] font-extrabold leading-[1.1] md:text-6xl'>
             <span>Finding Joy in Christ,&nbsp;</span>
