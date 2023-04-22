@@ -11,12 +11,15 @@ function PostCard({
   post: PostWithoutBody;
   simple?: boolean;
 }) {
-  const contentClasses = cn("space-y-4 md:space-y-6 p-8", {
-    "p-0 py-4": simple,
-  });
+  const contentClasses = cn(
+    "space-y-4 md:space-y-6 p-8 border-x border-b border-gray-200 dark:border-gray-800 rounded-b-lg overflow-hidden flex-1 flex flex-col",
+    {
+      "px-4 py-4": simple,
+    }
+  );
 
   return (
-    <div className='group w-full bg-white dark:bg-brand-coolnavy900 dark:ring-offset-brand-coolnavy900'>
+    <div className='cursor-pointer group w-full bg-white dark:bg-slate-950 overflow-hidden rounded-lg flex flex-col'>
       <Link
         href={post.url}
         className='group relative flex aspect-video overflow-hidden'
@@ -27,7 +30,7 @@ function PostCard({
           fill
           placeholder='blur'
           blurDataURL={post.bannerUrl}
-          className='object-cover object-center transition-transform duration-300 group-hover:scale-105'
+          className='object-cover object-center transition-transform duration-300 group-hover:scale-105 rounded-t-lg'
         />
         <div className='absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/50'></div>
       </Link>
@@ -55,7 +58,7 @@ function PostCard({
         {simple ? null : (
           <Link
             href={post.url}
-            className='group inline-block text-brand-primary'
+            className='group inline-block text-brand-primary mt-auto'
           >
             Read More <span className='sr-only'>On {post.title}</span>
             <span className='inline-block transition-transform group-hover:translate-x-1'>

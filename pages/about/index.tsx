@@ -7,7 +7,7 @@ const AboutPage: NextPage = () => {
       <NextSeo title='About Us - Abide in the Vine' />
       <div className='relative'>
         <div className='h-[300px] w-full bg-about bg-cover bg-center bg-no-repeat text-white md:h-[400px]'>
-          <div className='absolute inset-0 flex flex-col justify-center gap-8 bg-black/70 p-6 md:items-center'>
+          <div className='absolute inset-0 flex flex-col justify-center gap-8 bg-black/60 p-6 md:items-center'>
             <h1 className='text-5xl font-extrabold md:text-6xl'>
               <span>About Us</span>
             </h1>

@@ -30,7 +30,7 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className='bg-brand-coolnavy900 text-white dark:border-t dark:border-brand-coolnavy800'>
+    <footer className='bg-white dark:bg-slate-950 text-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-800'>
       <div className='container grid grid-cols-2 gap-6 py-16 md:grid-cols-3 md:py-20'>
         <div className='col-span-2 space-y-6 md:col-span-1'>
           <Link
@@ -91,7 +91,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className='bg-brand-coolnavy900 py-6 text-brand-coolnavy200 border-t border-brand-coolnavy800'>
+      <div className='bg-white dark:bg-slate-950 py-6 text-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-800'>
         <div className='container flex flex-col justify-between gap-8 md:flex-row'>
           <p>
             Copyright &copy; {new Date().getFullYear()}. All rights reserved.

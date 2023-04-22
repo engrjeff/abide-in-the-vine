@@ -45,7 +45,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
           style={{ backgroundImage: `url("${post.bannerUrl}")` }}
           className='h-[300px] w-full bg-cover bg-center bg-no-repeat text-white md:h-[400px]'
         >
-          <div className='absolute inset-0 flex flex-col justify-center gap-6 bg-black/80 p-6 md:items-center'>
+          <div className='absolute inset-0 flex flex-col justify-center gap-6 bg-black/60 p-6 md:items-center'>
             <h1 className='text-4xl font-extrabold md:text-5xl'>
               <span>{post.title}</span>
             </h1>
@@ -61,16 +61,9 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
           <p className='relative inline-block text-xl font-medium'>Tags</p>
           <span className='text-brand-primary'>&mdash;</span>
-          <div className='mt-2 flex flex-wrap gap-2 font-sans md:gap-3'>
-            {post.tags.map((tag) => (
-              <div
-                key={tag}
-                className='bg-gray-200 px-3 py-2 text-xs uppercase text-gray-700 dark:bg-slate-900 dark:text-slate-400 md:text-sm'
-              >
-                {tag}
-              </div>
-            ))}
-          </div>
+          <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
+            {post.tags.join(" , ")}
+          </span>
         </div>
         <ShareButtons />
       </div>

@@ -13,7 +13,7 @@ function NavLink(props: PropsWithChildren<LinkProps>) {
       : router.pathname.includes(props.href.toString());
 
   const linkClasses = cn(
-    "font-medium text-brand-gray100 hover:text-brand-primary dark:hover:text-brand-primary dark:text-brand-coolnavy300",
+    "font-medium text-brand-gray100 hover:text-brand-primary dark:hover:text-brand-primary dark:text-gray-400",
     {
       "text-brand-primary dark:text-brand-primary": isActive,
     }
