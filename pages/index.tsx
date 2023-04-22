@@ -25,7 +25,7 @@ const HomePage: NextPage<HomeProps> = (props) => {
           <PostCardBig post={latestPost} />
         </div>
       </div>
-      <div className='bg-gray-100 dark:bg-brand-coolnavy800'>
+      <div className='bg-white dark:bg-slate-950'>
         <div className='container py-10 md:py-20'>
           <SectionTitle
             title='Featured Articles'
@@ -39,7 +39,7 @@ const HomePage: NextPage<HomeProps> = (props) => {
           <div className='text-center'>
             <Link
               href='/blogs'
-              className='mt-10 inline-block rounded-full bg-brand-primary bg-opacity-95 px-10 py-4 text-lg font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm md:mt-20'
+              className='mt-10 inline-block rounded-full bg-brand-primary bg-opacity-95 px-10 py-4 text-lg font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm md:mt-20 transition-transform focus:scale-95'
             >
               Explore more articles
             </Link>
@@ -51,14 +51,15 @@ const HomePage: NextPage<HomeProps> = (props) => {
           Abide in Christ
         </h2>
         <p className='mb-6 text-lg'>Our Lord Jesus Christ Himself said,</p>
-        <blockquote className='space-y-6 font-article'>
+        <blockquote className='space-y-6 text-center'>
           <p className='max-w-[65ch] text-xl md:text-2xl'>
             Abide in Me, and I in you. As the branch cannot bear fruit of
             itself, unless it abides in the vine, neither can you, unless you
             abide in Me.
           </p>
-          <p className='space-x-3 text-lg uppercase tracking-wider text-brand-gray500 dark:text-brand-coolnavy200'>
+          <p className='space-x-3 uppercase tracking-widest text-brand-gray500 dark:text-brand-coolnavy200'>
             <span className='text-brand-primary'>&mdash;&nbsp;</span>John 15:4
+            <span className='text-brand-primary'>&mdash;&nbsp;</span>
           </p>
         </blockquote>
       </div>

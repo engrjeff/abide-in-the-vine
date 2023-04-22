@@ -5,15 +5,15 @@ import type { PostWithoutBody } from "@api/contentFetchFunctions";
 
 function PostCardBig({ post }: { post: PostWithoutBody }) {
   return (
-    <div className='flex w-full flex-col md:flex-row'>
-      <div className='group relative aspect-video flex-1 overflow-hidden'>
+    <div className='flex w-full flex-col md:flex-row overflow-hidden'>
+      <div className='group relative aspect-video flex-1 rounded-lg overflow-hidden'>
         <Image
           src={post.bannerUrl}
           alt={post.title}
           fill
           placeholder='blur'
           blurDataURL={post.bannerUrl}
-          className='object-cover object-center transition-transform duration-300 group-hover:scale-105'
+          className='object-cover object-center transition-transform duration-300 group-hover:scale-105 rounded-lg'
         />
         <div className='absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/50'></div>
       </div>
@@ -29,11 +29,11 @@ function PostCardBig({ post }: { post: PostWithoutBody }) {
               {post.title}
             </h3>
           </Link>
-          <p className='line-clamp-4 text-brand-gray500 dark:text-brand-coolnavy200'>
+          <p className='line-clamp-4 text-brand-gray500 dark:text-gray-400'>
             {post.description}
           </p>
         </div>
-        <div className='space-x-1 space-y-3 px-4 text-xs font-semibold uppercase tracking-widest text-brand-gray500 dark:text-brand-coolnavy200'>
+        <div className='space-x-1 space-y-3 px-4 text-xs font-semibold uppercase tracking-widest text-brand-gray500 dark:text-gray-400'>
           <span>{post.publishedAt}</span>
           <span className='text-brand-primary'>&mdash;</span>
           <span>{post.timeToRead}</span>

@@ -33,23 +33,20 @@ function Header() {
   return (
     <header
       className={cn(
-        "backdrop-blur-md flex md:grid md:grid-cols-3 items-center px-3 lg:px-16 shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-brand-coolnavy900/90 dark:text-white dark:border-b dark:border-brand-coolnavy800",
+        "backdrop-blur-md flex lg:grid lg:grid-cols-3 items-center px-3 lg:px-16 md:shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-slate-950/90 dark:text-white dark:border-b dark:border-gray-800",
         {
-          "h-20 md:h-32": onTop,
+          "h-20 md:h-24": onTop,
           "h-20": !onTop,
         }
       )}
     >
-      <Link
-        href='/'
-        className='flex items-center gap-4 text-lg font-bold md:text-xl'
-      >
+      <Link href='/' className='flex items-center gap-4 font-bold md:text-xl'>
         <Image
           src='/abide-logo.png'
           alt='Abide in the Vine'
           width={36}
           height={36}
-          className='h-7 w-7 object-cover object-center md:h-9 md:w-9'
+          className='h-6 w-6 object-cover object-center md:h-9 md:w-9'
           aria-hidden='true'
         />
         Abide in the Vine

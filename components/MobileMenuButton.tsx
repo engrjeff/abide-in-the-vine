@@ -8,7 +8,7 @@ const MobileMenuButton = ({
   isMenuOpen,
 }: MobileMenuButtonProps) => {
   return (
-    <div className='rounded-full hover:bg-slate-200 dark:hover:bg-slate-700'>
+    <div className='rounded-full hover:bg-gray-200 dark:hover:bg-slate-900'>
       <button
         onClick={onMenuToggle}
         aria-label='toggle menu'

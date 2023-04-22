@@ -14,7 +14,7 @@ function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label={isDark ? "light mode" : "dark mode"}
-      className='flex h-12 w-12 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-700'
+      className='flex h-12 w-12 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-slate-900'
     >
       {isDark ? (
         <SunIcon className='h-5 w-5' />
