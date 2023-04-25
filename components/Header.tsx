@@ -33,7 +33,7 @@ function Header() {
   return (
     <header
       className={cn(
-        "backdrop-blur-md flex lg:grid lg:grid-cols-3 items-center px-3 lg:px-16 md:shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-slate-950/90 dark:text-white dark:border-b dark:border-gray-800",
+        "backdrop-blur-md flex lg:grid lg:grid-cols-3 items-center px-3 lg:px-16 md:shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-slate-950/90 dark:text-white border-b border-gray-200 dark:border-gray-800",
         {
           "h-20 md:h-24": onTop,
           "h-20": !onTop,

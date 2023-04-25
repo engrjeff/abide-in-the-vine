@@ -17,6 +17,7 @@ import PostCard from "@components/PostCard";
 import BackButton from "@components/BackButton";
 import ShareButtons from "@components/ShareButtons";
 import { abide } from "@utils/constants";
+import ScrollToTopButton from "@components/ScrollToTopButton";
 
 type BlogPostProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -82,6 +83,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
           ))}
         </div>
       </div>
+      <ScrollToTopButton />
     </>
   );
 };

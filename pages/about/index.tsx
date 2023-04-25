@@ -21,7 +21,7 @@ const AboutPage: NextPage = () => {
         <h1 className='my-6 text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
           About Us
         </h1>
-        <div className='prose mx-auto font-article dark:prose-invert lg:prose-xl'>
+        <div className='prose mx-auto dark:prose-invert lg:prose-lg'>
           <p>
             Abide in the Vine is a Christ-centered, non-profit ministry located
             in the Philippines. This ministry exists to glorify God by
