@@ -91,8 +91,8 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className='bg-white dark:bg-slate-950 py-6 text-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-800'>
-        <div className='container flex flex-col justify-between gap-8 md:flex-row'>
+      <div className='bg-white dark:bg-slate-950 py-6 text-gray-800 dark:text-slate-400 border-t border-gray-200 dark:border-gray-800'>
+        <div className='container flex flex-col justify-between gap-8 md:flex-row text-xs'>
           <p>
             Copyright &copy; {new Date().getFullYear()}. All rights reserved.
           </p>

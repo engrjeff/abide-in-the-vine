@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { NextSeo } from "next-seo";
+import Link from "next/link";
 import type {
   NextPage,
-  GetServerSideProps,
   InferGetServerSidePropsType,
+  GetStaticProps,
 } from "next";
 
 import getSortedPosts, {
@@ -12,16 +13,19 @@ import getSortedPosts, {
 } from "@api/contentFetchFunctions";
 import PostCard from "@components/PostCard";
 import { cn } from "@utils/helpers";
+import { useRouter } from "next/router";
 
-type BlogsPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type BlogsPageProps = InferGetServerSidePropsType<typeof getStaticProps>;
 
 const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
-  const [page, setPage] = useState(0);
+  const router = useRouter();
 
   const postsPerPage = 6;
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
-  const startIndex = page * postsPerPage;
+  const startIndex = router.query.page
+    ? (Number(router.query.page) - 1) * postsPerPage
+    : 0;
   const lastIndex = startIndex + postsPerPage;
 
   return (
@@ -72,18 +76,25 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
           </div>
           <div className='flex items-center justify-center gap-3'>
             {Array.from(Array(totalPages).keys()).map((n) => (
-              <button
+              <Link
                 key={`page-${n + 1}`}
-                onClick={() => setPage(n)}
+                href={{
+                  pathname: "/blogs",
+                  query: {
+                    page: n + 1,
+                  },
+                }}
                 className={cn(
-                  "rounded h-9 w-9 border border-gray-200 dark:border-gray-800 hover:text-slate-950 hover:bg-brand-primary hover:border-brand-primary",
+                  "rounded h-9 w-9 border border-gray-200 flex items-center justify-center dark:border-gray-800 hover:text-slate-950 hover:bg-brand-primary hover:border-brand-primary",
                   {
-                    "bg-brand-primary text-slate-950": n === page,
+                    "bg-brand-primary text-slate-950":
+                      (!router.query.page && n === 0) ||
+                      router.query.page === String(n + 1),
                   }
                 )}
               >
                 {n + 1}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -92,7 +103,7 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   posts: PostWithoutBody[];
   tags: string[];
 }> = async () => {

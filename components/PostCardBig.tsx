@@ -40,7 +40,7 @@ function PostCardBig({ post }: { post: PostWithoutBody }) {
         </div>
         <div className='px-4'>
           <Link href={post.url} className='group text-brand-primary'>
-            Read More{" "}
+            Read More <span className='sr-only'>of {post.title}</span>
             <span className='inline-block transition-transform group-hover:translate-x-1'>
               &rarr;
             </span>

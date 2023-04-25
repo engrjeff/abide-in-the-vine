@@ -50,7 +50,7 @@ function PostCard({
             </p>
           )}
         </div>
-        <div className='space-x-1 space-y-3 text-xs font-semibold uppercase tracking-widest text-brand-gray500 dark:text-brand-coolnavy200'>
+        <div className='space-x-1 flex-1 space-y-3 text-xs font-semibold uppercase tracking-widest text-brand-gray500 dark:text-brand-coolnavy200'>
           <span>{post.publishedAt}</span>
           <span className='text-brand-primary'>&mdash;</span>
           <span>{post.timeToRead}</span>

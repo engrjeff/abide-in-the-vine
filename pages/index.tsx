@@ -25,6 +25,7 @@ const HomePage: NextPage<HomeProps> = (props) => {
           <PostCardBig post={latestPost} />
         </div>
       </div>
+
       <div className='bg-white dark:bg-slate-950'>
         <div className='container py-10 md:py-20'>
           <SectionTitle
@@ -70,7 +71,7 @@ const HomePage: NextPage<HomeProps> = (props) => {
 export const getStaticProps: GetStaticProps<{
   featuredPosts: PostWithoutBody[];
 }> = async (context) => {
-  const featuredPosts = await getSortedPosts(0, 7);
+  const featuredPosts = getSortedPosts(0, 7);
 
   return {
     props: {

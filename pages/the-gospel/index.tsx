@@ -1,7 +1,7 @@
 import type {
-  GetServerSideProps,
   NextPage,
   InferGetServerSidePropsType,
+  GetStaticProps,
 } from "next";
 import { NextSeo } from "next-seo";
 
@@ -18,7 +18,7 @@ import { Gospel } from "@contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import PostCard from "@components/PostCard";
 
-type GospelPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type GospelPageProps = InferGetServerSidePropsType<typeof getStaticProps>;
 
 const TheGospelPage: NextPage<GospelPageProps> = (props) => {
   const { gospelContent, relatedPosts } = props;
@@ -45,7 +45,7 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
       <div className='relative'>
         <div className='h-[300px] w-full bg-gospel bg-cover bg-center bg-no-repeat text-white md:h-[400px]'>
           <div className='absolute inset-0 flex flex-col items-center justify-center gap-8 bg-black/70 p-6'>
-            <h1 className='text-5xl font-extrabold md:text-6xl'>
+            <h1 className='text-5xl font-extrabold md:text-6xl leading-tight'>
               <span>The Gospel of Jesus Christ</span>
             </h1>
             <p className='text-lg uppercase tracking-wider'>
@@ -76,7 +76,7 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
   gospelContent: Gospel;
   relatedPosts: PostWithoutBody[];
 }> = async () => {

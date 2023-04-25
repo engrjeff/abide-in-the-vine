@@ -5,7 +5,7 @@ function HeroImage() {
     <div className='relative'>
       <div className='h-[500px] w-full bg-hero bg-cover bg-center bg-no-repeat text-white md:h-[700px]'>
         <div className='absolute inset-0 flex flex-col items-center justify-center gap-8 bg-black/60 p-8'>
-          <h1 className='text-center text-[40px] font-extrabold leading-[1.1] md:text-6xl'>
+          <h1 className='text-center text-[45px] font-extrabold leading-[1.2] md:text-6xl'>
             <span>Finding Joy in Christ,&nbsp;</span>
             <span>Having Christ as Joy</span>
           </h1>
