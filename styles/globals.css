@@ -3,10 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: 142 77% 29%;
+    --accent: 126 48% 52%;
+
+    --background: 0 0% 100%;
+    --foreground: 216 46% 23%;
+    --muted: 216 15% 62%;
+
+    --border: 0 0% 92%;
+    --border-alpha: 1;
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --primary: 142 77% 29%;
+    --accent: 126 48% 52%;
+
+    --background: 214 41% 13%;
+    --foreground: 0 0% 100%;
+    --muted: 216 15% 62%;
+
+    --border: 0 0% 92%;
+    --border-alpha: 0.2;
+
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
-    @apply scroll-p-24 scroll-smooth md:scroll-p-28 selection:bg-brand-accent selection:text-white;
+    @apply scroll-p-24 scroll-smooth md:scroll-p-28;
   }
 
   /* width */

@@ -1,16 +1,27 @@
 import { menuItems } from "@utils/constants";
 import NavLink from "./NavLink";
+import Link from "next/link";
+import Image from "next/image";
 
 function NavLinks() {
   return (
-    <nav className='hidden lg:block'>
-      <ul className='flex items-center justify-center space-x-8'>
-        {menuItems.map((navLink) => (
-          <li key={navLink.label}>
-            <NavLink href={navLink.path}>{navLink.label}</NavLink>
-          </li>
+    <nav className='py-5'>
+      <Link href='/' className='flex md:hidden gap-3 items-center'>
+        <Image
+          src='/abide-logo.png'
+          alt='Abide in the Vine'
+          height={24}
+          width={24}
+        />
+        <span className='text-2xl font-semibold'>Abide.</span>
+      </Link>
+      <div className='hidden md:block'>
+        {menuItems.map((menu) => (
+          <NavLink key={menu.label} href={menu.path}>
+            {menu.label}
+          </NavLink>
         ))}
-      </ul>
+      </div>
     </nav>
   );
 }

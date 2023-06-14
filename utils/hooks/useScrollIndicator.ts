@@ -7,11 +7,11 @@ export default function useScrollIndicator() {
   const router = useRouter();
 
   useEffect(() => {
-    if (
-      router.pathname !== "/blogs/[slug]" &&
-      router.pathname !== "/the-gospel"
-    )
-      return setScrollIndicatorWidth(0);
+    // if (
+    //   router.pathname !== "/blogs/[slug]" &&
+    //   router.pathname !== "/the-gospel"
+    // )
+    //   return setScrollIndicatorWidth(0);
 
     const onScroll = () => {
       const scroll = document.documentElement.scrollTop;

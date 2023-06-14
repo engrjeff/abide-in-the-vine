@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube, FaMedium } from "react-icons/fa";
 
 import { menuItems, abide } from "@utils/constants";
+import SocialLinks from "./SocialLinks";
 
 const socialLinks = [
   {
@@ -30,8 +31,8 @@ const socialLinks = [
 
 function Footer() {
   return (
-    <footer className='bg-white dark:bg-slate-950 text-gray-800 dark:text-white border-t border-gray-200 dark:border-gray-800'>
-      <div className='container grid grid-cols-2 gap-6 py-16 md:grid-cols-3 md:py-20'>
+    <footer className='bg-background border-t'>
+      <div className='container max-w-site grid grid-cols-2 gap-6 py-16 md:grid-cols-3 md:py-20'>
         <div className='col-span-2 space-y-6 md:col-span-1'>
           <Link
             href='/'
@@ -47,7 +48,7 @@ function Footer() {
             />
             Abide in the Vine
           </Link>
-          <p className='max-w-[30ch] text-brand-coolnavy300'>
+          <p className='max-w-[30ch] text-muted'>
             Abide in the Vine is a Christian organization which aims to glorify
             God by proclaiming the truth that satisfaction and joy can only be
             found in Jesus Christ.
@@ -57,42 +58,19 @@ function Footer() {
           <li className='mb-6 text-lg font-semibold'>Site Menu</li>
           {menuItems.map((menu) => (
             <li key={menu.label}>
-              <Link
-                href={menu.path}
-                className='text-brand-coolnavy300 hover:text-brand-accent'
-              >
+              <Link href={menu.path} className='text-muted hover:text-accent'>
                 {menu.label}
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href='/the-gospel'
-              className='text-brand-coolnavy300 hover:text-brand-accent'
-            >
-              The Gospel
-            </Link>
-          </li>
         </ul>
-        <ul className='space-y-3 md:justify-self-end'>
-          <li className='mb-6 text-lg font-semibold'>Follow Us</li>
-          {socialLinks.map((linkItem) => (
-            <li key={linkItem.label}>
-              <a
-                href={linkItem.link}
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center gap-4 text-brand-coolnavy300 hover:text-brand-accent'
-              >
-                <span> {linkItem.icon}</span>
-                <span> {linkItem.label}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className='space-y-3 md:justify-self-end'>
+          <p className='mb-6 text-lg font-semibold'>Follow Us</p>
+          <SocialLinks />
+        </div>
       </div>
-      <div className='bg-white dark:bg-slate-950 py-6 text-gray-800 dark:text-slate-400 border-t border-gray-200 dark:border-gray-800'>
-        <div className='container flex flex-col justify-between gap-8 md:flex-row text-xs'>
+      <div className='bg-background py-6 border-t'>
+        <div className='container max-w-site flex flex-col justify-between gap-8 md:flex-row text-xs'>
           <p>
             Copyright &copy; {new Date().getFullYear()}. All rights reserved.
           </p>
@@ -102,7 +80,7 @@ function Footer() {
               href='http://jeffsegovia.dev'
               target='_blank'
               rel='noreferrer'
-              className='text-brand-primary'
+              className='text-accent'
             >
               Jeff Segovia
             </a>

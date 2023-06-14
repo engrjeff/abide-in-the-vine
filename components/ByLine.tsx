@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function ByLine() {
   return (
-    <div className='mt-4 flex items-center gap-4'>
+    <div className='flex items-center gap-4'>
       <Image
         src='https://jeffsegovia.dev/me.jpg'
         alt='Jeff segovia'
@@ -10,7 +10,7 @@ function ByLine() {
         height={36}
         className='h-9 w-9 rounded-full object-cover'
       />
-      <span className='uppercase tracking-wider text-sm'>By: Jeff Segovia</span>
+      <span className='text-sm text-muted'>By: Jeff Segovia</span>
     </div>
   );
 }

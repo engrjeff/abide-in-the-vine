@@ -45,9 +45,21 @@ export function getUniqueTagsFromPosts(posts: PostWithoutBody[]) {
   return uniqueTags;
 }
 
+export function getAllTags() {
+  const posts = getSortedPosts();
+  const tags = getUniqueTagsFromPosts(posts);
+  return tags;
+}
+
 export async function getPostBySlug(slug: string) {
   const post = await allPosts.find((p) => p.slug === slug);
   return post;
+}
+
+export function getGospelPosts() {
+  const posts = getSortedPosts().filter((post) => post.tags.includes("gospel"));
+
+  return posts;
 }
 
 // Gospel

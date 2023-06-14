@@ -19,6 +19,9 @@ import ShareButtons from "@components/ShareButtons";
 import { abide } from "@utils/constants";
 import ScrollToTopButton from "@components/ScrollToTopButton";
 import ByLine from "@components/ByLine";
+import SectionHeading from "@components/SectionHeading";
+import Link from "next/link";
+import RelatedPost from "@components/RelatedPost";
 
 type BlogPostProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -58,30 +61,32 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         </div>
       </div>
 
-      <div className='container max-w-4xl pt-10'>
+      <div className='container max-w-site pt-10 space-y-4'>
         <BackButton backToPath='/blogs' label='back to blogs' />
         <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
           <p className='relative inline-block text-xl font-medium'>Tags</p>
-          <span className='text-brand-primary'>&mdash;</span>
+          <span className='text-accent'>&mdash;</span>
           <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
             {post.tags.join(" , ")}
           </span>
         </div>
-        <ShareButtons />
         <ByLine />
+        <ShareButtons />
       </div>
-      <article className='prose prose-lg prose-quoteless mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-brand-primary md:px-0 md:text-justify'>
+      <article className='prose w-full prose-lg prose-quoteless mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-primary md:px-0 md:text-justify'>
         <MDXContent />
       </article>
 
       <div className='container mb-20 max-w-4xl space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
-        <h2 className='text-2xl font-extrabold'>
-          <span>Related Articles</span>
-        </h2>
-        <p>Love this post? For sure you will love these too:</p>
+        <SectionHeading title='Related Articles' />
+        <p className='text-muted'>
+          Love this post? For sure you will love these too:
+        </p>
         <div className='grid gap-8 md:grid-cols-2'>
           {nextPosts.map((nextPost) => (
-            <PostCard key={nextPost._id} post={nextPost} simple />
+            <Link key={nextPost._id} href={nextPost.url}>
+              <RelatedPost post={nextPost} />
+            </Link>
           ))}
         </div>
       </div>

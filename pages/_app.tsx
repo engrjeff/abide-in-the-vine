@@ -7,13 +7,12 @@ import Header from "../components/Header";
 import { abide } from "@utils/constants";
 import Footer from "@components/Footer";
 import Head from "next/head";
+import ArticleScrollIndicator from "@components/ScrollIndicator";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute='class'>
-      <div
-        className={`font-sans text-brand-black dark:bg-brand-coolnavy900 dark:text-white`}
-      >
+      <div className={`font-sans relative`}>
         <NextSeo
           title='Abide in the Vine'
           description={abide.desc}
@@ -112,6 +111,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
           <meta name='theme-color' content='#1c2433' />
         </Head>
+        <ArticleScrollIndicator />
         <Header />
         <main>
           <Component {...pageProps} />

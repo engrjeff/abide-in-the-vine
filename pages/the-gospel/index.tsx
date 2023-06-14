@@ -17,6 +17,9 @@ import getSortedPosts, {
 import { Gospel } from "@contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import PostCard from "@components/PostCard";
+import SectionHeading from "@components/SectionHeading";
+import RelatedPost from "@components/RelatedPost";
+import Link from "next/link";
 
 type GospelPageProps = InferGetServerSidePropsType<typeof getStaticProps>;
 
@@ -54,21 +57,23 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
           </div>
         </div>
       </div>
-      <div className='container max-w-5xl pt-10'>
+      <div className='container max-w-site pt-10'>
         <BackButton backToPath='/blogs' label='back to blogs' />
         <ShareButtons />
       </div>
-      <article className='prose prose-lg mx-auto px-5 py-10 text-justify font-article dark:prose-invert lg:prose-xl prose-blockquote:border-brand-primary md:px-0'>
+      <article className='prose prose-lg mx-auto px-5 py-10 text-justify font-article dark:prose-invert lg:prose-xl prose-blockquote:border-primary md:px-0 prose-img:rounded-lg'>
         <MDXContent components={{ BannerImage }} />
       </article>
-      <div className='container mb-20 max-w-5xl space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
-        <h2 className='text-2xl font-extrabold'>
-          <span>Related Articles</span>
-        </h2>
-        <p>Want to know more about the gospel? Check these articles:</p>
+      <div className='container mb-20 max-w-site space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
+        <SectionHeading title='Related Articles' />
+        <p className='text-muted'>
+          Want to know more about the gospel? Check these articles:
+        </p>
         <div className='grid gap-8 md:grid-cols-2'>
           {relatedPosts.map((nextPost) => (
-            <PostCard key={nextPost._id} post={nextPost} simple />
+            <Link key={nextPost._id} href={nextPost.url}>
+              <RelatedPost key={nextPost._id} post={nextPost} />
+            </Link>
           ))}
         </div>
       </div>

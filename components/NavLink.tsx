@@ -12,12 +12,9 @@ function NavLink(props: PropsWithChildren<LinkProps>) {
       ? router.pathname === props.href
       : router.pathname.includes(props.href.toString());
 
-  const linkClasses = cn(
-    "font-medium text-brand-gray100 hover:text-brand-primary dark:hover:text-brand-primary dark:text-gray-400",
-    {
-      "text-brand-primary dark:text-brand-primary": isActive,
-    }
-  );
+  const linkClasses = cn("text-sm px-5 py-2 rounded-full inline-flex", {
+    "bg-gradient-to-r from-primary to-accent text-white": isActive,
+  });
 
   return <Link className={linkClasses} {...props} />;
 }
