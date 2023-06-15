@@ -5,24 +5,19 @@ import Link from "next/link";
 import { cn } from "@utils/helpers";
 
 import NavLinks from "./NavLinks";
-import ThemeToggle from "./ThemeToggle";
-import ArticleScrollIndicator from "./ScrollIndicator";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileNav from "./MobileNav";
+import Search from "./Search";
+import SocialLinks from "./SocialLinks";
+import ThemeToggle from "./ThemeToggle";
 
 function Header() {
   const [onTop, setOnTop] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    document.body.classList.toggle("overflow-hidden");
-    setMobileMenuOpen((prev) => !prev);
-  };
 
   useEffect(() => {
     const scrollCallback = () => {
       const scrolledFromTop = window.scrollY;
-      setOnTop(scrolledFromTop <= 100);
+      setOnTop(scrolledFromTop <= 150);
     };
     window.addEventListener("scroll", scrollCallback);
     return () => {
@@ -31,42 +26,39 @@ function Header() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "backdrop-blur-md flex lg:grid lg:grid-cols-3 items-center px-3 lg:px-16 md:shadow sticky w-full top-0 py-4 z-30 bg-white/80 transition-all dark:bg-slate-950/90 dark:text-white border-b border-gray-200 dark:border-gray-800",
-        {
-          "h-20 md:h-24": onTop,
-          "h-20": !onTop,
-        }
-      )}
-    >
-      <Link href='/' className='flex items-center gap-4 font-bold md:text-xl'>
-        <Image
-          src='/abide-logo.png'
-          alt='Abide in the Vine'
-          width={36}
-          height={36}
-          className='h-6 w-6 object-cover object-center md:h-9 md:w-9'
-          aria-hidden='true'
-        />
-        Abide in the Vine
-      </Link>
-      <NavLinks />
-      <MobileNav isMenuOpen={mobileMenuOpen} onLinkClick={toggleMobileMenu} />
-      <div className='ml-auto flex items-center space-x-4 justify-self-end'>
-        <Link
-          href='/the-gospel'
-          className='hidden rounded-full bg-brand-primary bg-opacity-95 px-6 py-2 font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm lg:inline'
-        >
-          The Gospel
+    <header className='mb-6'>
+      <div className='py-9 border-b container max-w-site hidden md:flex justify-between items-center'>
+        <Link href='/' className='flex gap-3 items-center'>
+          <Image
+            src='/abide-logo.png'
+            alt='Abide in the Vine'
+            height={24}
+            width={24}
+          />
+          <span className='text-2xl font-semibold'>Abide.</span>
         </Link>
-        <ThemeToggle />
-        <MobileMenuButton
-          onMenuToggle={toggleMobileMenu}
-          isMenuOpen={mobileMenuOpen}
-        />
+        <SocialLinks />
       </div>
-      <ArticleScrollIndicator />
+      <div
+        className={cn(
+          "w-full inset-x-0 bg-background transition-transform duration-500 z-[999]",
+          {
+            "fixed top-0 lg:-top-20 lg:translate-y-20 border-b": !onTop,
+          },
+          {
+            "border-b md:border-b-0 fixed lg:static top-0 lg:top-auto": onTop,
+          }
+        )}
+      >
+        <div className='flex justify-between items-center container max-w-site'>
+          <NavLinks />
+          <div className='flex gap-3 items-center'>
+            <Search />
+            <ThemeToggle />
+            <MobileMenuButton />
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

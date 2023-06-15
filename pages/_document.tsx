@@ -21,7 +21,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
         </Head>
-        <body>
+        <body className='bg-background text-foreground min-h-screen'>
           <Main />
           <NextScript />
         </body>

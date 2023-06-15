@@ -1,3 +1,6 @@
+import NProgress from "nprogress";
+
+import "../styles/nprogress.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
@@ -7,13 +10,35 @@ import Header from "../components/Header";
 import { abide } from "@utils/constants";
 import Footer from "@components/Footer";
 import Head from "next/head";
+import ArticleScrollIndicator from "@components/ScrollIndicator";
+
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+NProgress.configure({ showSpinner: false });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteStart = () => NProgress.start();
+    const handleRouteDone = () => NProgress.done();
+
+    router.events.on("routeChangeStart", handleRouteStart);
+    router.events.on("routeChangeComplete", handleRouteDone);
+    router.events.on("routeChangeError", handleRouteDone);
+
+    return () => {
+      // Make sure to remove the event handler on unmount!
+      router.events.off("routeChangeStart", handleRouteStart);
+      router.events.off("routeChangeComplete", handleRouteDone);
+      router.events.off("routeChangeError", handleRouteDone);
+    };
+  }, [router.events]);
+
   return (
     <ThemeProvider attribute='class'>
-      <div
-        className={`font-sans text-brand-black dark:bg-brand-coolnavy900 dark:text-white`}
-      >
+      <div className={`font-sans relative`}>
         <NextSeo
           title='Abide in the Vine'
           description={abide.desc}
@@ -112,8 +137,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
           <meta name='theme-color' content='#1c2433' />
         </Head>
+        <ArticleScrollIndicator />
         <Header />
-        <main>
+        <main className='mt-[72px] lg:mt-0'>
           <Component {...pageProps} />
         </main>
         <Footer />

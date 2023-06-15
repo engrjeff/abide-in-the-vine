@@ -9,7 +9,7 @@ const ScrollToTopButton = () => {
       onClick={scrollToTop}
       className={`${
         shown ? "scale-100" : "scale-0"
-      } w-12 h-12 transition-transform duration-200 flex fixed right-10 lg:right-20 bottom-10 bg-brand-primary rounded-full shadow-lg justify-center items-center text-white`}
+      } w-10 h-10 transition-transform duration-200 flex fixed right-4 lg:right-20 bottom-4 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg justify-center items-center text-white`}
     >
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -17,7 +17,7 @@ const ScrollToTopButton = () => {
         viewBox='0 0 24 24'
         strokeWidth={2}
         stroke='currentColor'
-        className='w-6 h-6'
+        className='w-5 h-5'
       >
         <path
           strokeLinecap='round'

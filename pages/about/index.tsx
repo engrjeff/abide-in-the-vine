@@ -1,3 +1,4 @@
+import SectionHeading from "@components/SectionHeading";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
@@ -17,11 +18,9 @@ const AboutPage: NextPage = () => {
           </div>
         </div>
       </div>
-      <section className='container max-w-4xl py-10 md:py-20'>
-        <h1 className='my-6 text-4xl font-extrabold text-abide-dark dark:text-abide-light'>
-          About Us
-        </h1>
-        <div className='prose mx-auto dark:prose-invert lg:prose-lg'>
+      <section className='container max-w-prose py-10 md:py-20'>
+        <SectionHeading title='About Us' />
+        <article className='prose mx-auto dark:prose-invert lg:prose-lg mt-10'>
           <p>
             Abide in the Vine is a Christ-centered, non-profit ministry located
             in the Philippines. This ministry exists to glorify God by
@@ -38,7 +37,7 @@ const AboutPage: NextPage = () => {
           <p>
             May you be blessed by the posts in this website. Soli Deo Gloria!
           </p>
-        </div>
+        </article>
       </section>
     </>
   );
