@@ -62,7 +62,7 @@ function LatestPosts({ posts }: LatestPostsProps) {
       >
         <ChevronRightIcon className='w-5 h-5 text-white' />
       </button>
-      <div className='overflow-hidden' ref={emblaRef}>
+      <div className='overflow-hidden mt-2' ref={emblaRef}>
         <div className='flex'>
           {posts.map((post) => (
             <div
@@ -83,7 +83,6 @@ function LatestPosts({ posts }: LatestPostsProps) {
                 />
               </Link>
 
-              {/* <div className='absolute inset-0 bg-black/50 backdrop-brightness-50 rounded-lg pointer-events-none'></div> */}
               <div className='absolute w-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center'>
                 <h1 className='text-white font-bold text-2xl md:text-4xl text-center mb-5 hover:text-accent transition-colors leading-relaxed'>
                   <Link href={post.url}>{post.title}</Link>

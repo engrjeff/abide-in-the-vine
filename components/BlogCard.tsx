@@ -23,7 +23,7 @@ function BlogCard({ post }: { post: PostWithoutBody }) {
           <div className='flex items-center gap-2'>
             <ByLine />
             <span className='text-accent'>&mdash;</span>
-            <span className='text-sm text-muted'>{post.publishedAt}</span>
+            <span className='text-sm text-muted'>{post.timeToRead}</span>
           </div>
           <div className='flex gap-2 items-center flex-wrap mt-6'>
             {post.tags.map((tag) => (
@@ -36,8 +36,8 @@ function BlogCard({ post }: { post: PostWithoutBody }) {
           <p className='line-clamp-3 text-sm lg:text-base text-muted'>
             {post.description}
           </p>
-          <span className='text-xs text-muted uppercase inline-block'>
-            {post.timeToRead}
+          <span className='text-xs text-muted inline-block'>
+            Posted on {post.publishedAt}
           </span>
         </div>
         <div className='py-4 lg:py-6 mx-6 lg:mx-10 border-t'>
