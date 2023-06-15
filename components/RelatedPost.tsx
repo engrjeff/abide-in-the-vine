@@ -1,15 +1,13 @@
-import Image from "next/image";
-
 import { type PostWithoutBody } from "@api/contentFetchFunctions";
+import AppImage from "./AppImage";
 
 function RelatedPost({ post }: { post: PostWithoutBody }) {
   return (
     <div className='group flex items-center gap-4 border rounded-lg p-2 lg:p-4'>
       <div className='relative w-20 aspect-square lg:w-[120px] lg:h-[120px]'>
-        <Image
+        <AppImage
           src={post.bannerUrl}
           alt={post.title}
-          placeholder='blur'
           blurDataURL={post.bannerUrl}
           fill
           className='w-full h-full object-cover object-center rounded-lg'

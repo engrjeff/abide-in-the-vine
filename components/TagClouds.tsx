@@ -1,4 +1,5 @@
 import Card from "./Card";
+import TagLink from "./TagLink";
 
 function TagClouds({ tags }: { tags: string[] }) {
   return (
@@ -8,12 +9,7 @@ function TagClouds({ tags }: { tags: string[] }) {
 
       <div className='flex gap-2 items-center flex-wrap mt-6'>
         {tags.map((tag) => (
-          <span
-            key={tag}
-            className='px-3 py-1.5 rounded-full border text-xs text-muted capitalize'
-          >
-            #{tag}
-          </span>
+          <TagLink key={tag} tag={tag} />
         ))}
       </div>
     </Card>

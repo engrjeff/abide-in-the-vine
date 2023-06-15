@@ -22,7 +22,7 @@ const NotFoundPage = () => {
       </p>
       <Link
         href='/'
-        className='mt-10 rounded-full bg-brand-primary bg-opacity-95 px-10 py-4 text-lg font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm'
+        className='mt-10 rounded-full bg-gradient-to-r from-primary to-accent px-10 py-4 text-lg font-medium text-white shadow-lg hover:bg-opacity-100 focus:shadow-sm'
       >
         Back to Home
       </Link>

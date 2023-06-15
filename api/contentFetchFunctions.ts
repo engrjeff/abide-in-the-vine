@@ -62,6 +62,12 @@ export function getGospelPosts() {
   return posts;
 }
 
+export function getPostsByTag(tag: string) {
+  const posts = getSortedPosts().filter((post) => post.tags.includes(tag));
+
+  return posts;
+}
+
 // Gospel
 export function getGospelContent() {
   return allGospels[0];
