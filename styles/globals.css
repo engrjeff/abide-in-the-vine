@@ -21,12 +21,14 @@
     --primary: 142 77% 29%;
     --accent: 126 48% 52%;
 
-    --background: 214 41% 13%;
+    /* --background: 214 41% 13%; */
+    --background: 224 71% 4%;
     --foreground: 0 0% 100%;
     --muted: 216 15% 62%;
 
-    --border: 0 0% 92%;
-    --border-alpha: 0.2;
+    /* --border: 0 0% 92%; */
+    --border: 215 28% 17%;
+    --border-alpha: 1;
 
     --radius: 0.625rem;
   }
