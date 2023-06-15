@@ -1,10 +1,8 @@
 import type {
   NextPage,
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
+  GetServerSideProps,
+  InferGetServerSidePropsType,
 } from "next";
-import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import type { Post } from "@contentlayer/generated";
@@ -13,7 +11,6 @@ import getSortedPosts, {
   getPostBySlug,
   PostWithoutBody,
 } from "@api/contentFetchFunctions";
-import PostCard from "@components/PostCard";
 import BackButton from "@components/BackButton";
 import ShareButtons from "@components/ShareButtons";
 import { abide } from "@utils/constants";
@@ -23,7 +20,7 @@ import SectionHeading from "@components/SectionHeading";
 import Link from "next/link";
 import RelatedPost from "@components/RelatedPost";
 
-type BlogPostProps = InferGetStaticPropsType<typeof getStaticProps>;
+type BlogPostProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   const MDXContent = useMDXComponent(post.body.code);
@@ -66,10 +63,10 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
       </div>
       <article className='prose w-full prose-lg prose-quoteless mx-auto px-5 py-2 lg:py-10 pb-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-primary md:px-0 md:text-justify'>
         <div className='not-prose space-y-2'>
-          <div className='flex items-center gap-4 font-sans'>
+          <div className='flex items-center gap-3 font-sans flex-wrap'>
             <p className='relative inline-block text-xl font-medium'>Tags</p>
             <span className='text-accent'>&mdash;</span>
-            <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
+            <span className='whitespace-nowrap break-words py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
               {post.tags.join(" , ")}
             </span>
           </div>
@@ -97,20 +94,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getSortedPosts();
-
-  return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.slug,
-      },
-    })),
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   post: Post;
   nextPosts: PostWithoutBody[];
 }> = async (context) => {

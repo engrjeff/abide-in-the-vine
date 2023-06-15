@@ -1,24 +1,22 @@
-import { useState } from "react";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import type {
   NextPage,
   InferGetServerSidePropsType,
-  GetStaticProps,
+  GetServerSideProps,
 } from "next";
 
 import getSortedPosts, {
   getUniqueTagsFromPosts,
   PostWithoutBody,
 } from "@api/contentFetchFunctions";
-import PostCard from "@components/PostCard";
 import { cn } from "@utils/helpers";
 import { useRouter } from "next/router";
 import BlogCard from "@components/BlogCard";
 import SectionHeading from "@components/SectionHeading";
 import TagClouds from "@components/TagClouds";
 
-type BlogsPageProps = InferGetServerSidePropsType<typeof getStaticProps>;
+type BlogsPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
   const router = useRouter();
@@ -85,7 +83,7 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   posts: PostWithoutBody[];
   tags: string[];
 }> = async () => {

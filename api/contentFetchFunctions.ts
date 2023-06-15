@@ -62,6 +62,23 @@ export function getGospelPosts() {
   return posts;
 }
 
+export function getPostsByTag(tag: string) {
+  const posts = getSortedPosts().filter((post) => post.tags.includes(tag));
+
+  return posts;
+}
+
+export function getSearchResults(keyword: string) {
+  const q = keyword.toLowerCase();
+  const posts = getSortedPosts().filter(
+    (post) =>
+      post.title.toLowerCase().includes(q) ||
+      post.tags.map((t) => t.toLowerCase()).includes(q)
+  );
+
+  return posts;
+}
+
 // Gospel
 export function getGospelContent() {
   return allGospels[0];
