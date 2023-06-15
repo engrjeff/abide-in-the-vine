@@ -2,7 +2,6 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import { menuItems } from "@utils/constants";
 import { cn } from "@utils/helpers";
 import Image from "next/image";
-import Link from "next/link";
 import NavLink from "./NavLink";
 import SocialLinks from "./SocialLinks";
 
@@ -16,15 +15,17 @@ const MobileNav = ({ isMenuOpen, onLinkClick }: MobileNavProps) => {
     <div className={cn("relative")}>
       <div
         className={cn({
-          "fixed inset-0 bg-black/30 backdrop-blur-sm z-[999] transition-colors":
-            isMenuOpen,
+          "fixed inset-0 bg-black/30 z-[999] transition-colors": isMenuOpen,
         })}
       ></div>
       <nav
         className={cn(
-          "p-6 fixed flex flex-col inset-y-0 right-0 h-screen w-[70%] bg-background border-l z-[999] translate-x-full transition-transform",
+          "p-6 fixed flex flex-col inset-y-0 right-0 h-screen w-[70%] bg-background border-l z-[999] transition-transform",
           {
-            "translate-x-0": isMenuOpen,
+            "translate-x-0 opacity-100": isMenuOpen,
+          },
+          {
+            "translate-x-full opacity-0 w-0": !isMenuOpen,
           }
         )}
       >

@@ -17,7 +17,7 @@ const CopiedNotif = (props: CopiedNotifProps) => {
   useTimeout(closeCallback, 3000, copied);
 
   const copyAlertClass = cn(
-    "bg-border text-white font-semibold font-sans shadow-sm px-8 py-2 text-sm duration-200 transition-transform rounded-full",
+    "absolute bg-gray-600 text-white font-semibold font-sans shadow-sm px-4 py-2 text-xs duration-200 transition-transform rounded-full",
     {
       "translate-y-0 opacity-1": copied,
       "translate-y-6 opacity-0": !copied,

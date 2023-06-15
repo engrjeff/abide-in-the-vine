@@ -19,7 +19,7 @@ function BlogCard({ post }: { post: PostWithoutBody }) {
         />
       </div>
       <div className='border border-t-0 rounded-b-lg flex-1 flex flex-col'>
-        <div className='flex-1 p-6 lg:p-10 space-y-5'>
+        <div className='flex-1 p-6 lg:p-10 space-y-3 md:space-y-5'>
           <div className='flex items-center gap-2'>
             <ByLine />
             <span className='text-accent'>&mdash;</span>
@@ -33,11 +33,8 @@ function BlogCard({ post }: { post: PostWithoutBody }) {
           </p>
         </div>
         <div className='py-4 lg:py-6 mx-6 lg:mx-10 border-t'>
-          <div className='flex flex-col-reverse lg:flex-row justify-between gap-4'>
-            <div>
-              <p className='text-xs text-muted block lg:hidden'>Share This</p>
-              <ShareButtons />
-            </div>
+          <div className='flex justify-between gap-4'>
+            <ShareButtons />
             <Link
               href={post.url}
               className='flex items-center font-semibold group text-sm lg:text-base'

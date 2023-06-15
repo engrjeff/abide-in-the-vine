@@ -65,7 +65,10 @@ function LatestPosts({ posts }: LatestPostsProps) {
       <div className='overflow-hidden' ref={emblaRef}>
         <div className='flex'>
           {posts.map((post) => (
-            <div key={post._id} className='relative flex-[0_0_100%] mx-4'>
+            <div
+              key={post._id}
+              className='relative flex-[0_0_100%] mx-2 lg:mx-4'
+            >
               <Link
                 href={post.url}
                 className='relative w-full block h-[250px] md:h-auto md:aspect-video group rounded-lg overflow-hidden'
@@ -76,26 +79,16 @@ function LatestPosts({ posts }: LatestPostsProps) {
                   blurDataURL={post.bannerUrl}
                   alt={post.title}
                   fill
-                  className='w-full h-full rounded-lg  transition-transform duration-300'
+                  className='w-full h-full rounded-lg  transition-transform duration-300 brightness-50'
                 />
               </Link>
 
-              <div className='absolute inset-0 bg-black/50 backdrop-brightness-50 rounded-lg pointer-events-none'></div>
+              {/* <div className='absolute inset-0 bg-black/50 backdrop-brightness-50 rounded-lg pointer-events-none'></div> */}
               <div className='absolute w-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center'>
-                <div className='flex justify-center flex-wrap gap-3 mb-5'>
-                  {post.tags.map((tag) => (
-                    <div
-                      key={tag}
-                      className='px-3 text-white py-1 rounded-full text-xs capitalize bg-gradient-to-r from-primary to-accent'
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
                 <h1 className='text-white font-bold text-2xl md:text-4xl text-center mb-5 hover:text-accent transition-colors leading-relaxed'>
                   <Link href={post.url}>{post.title}</Link>
                 </h1>
-                <span className='text-sm text-muted'>{post.publishedAt}</span>
+                <span className='text-sm text-white'>{post.publishedAt}</span>
               </div>
             </div>
           ))}
@@ -106,10 +99,8 @@ function LatestPosts({ posts }: LatestPostsProps) {
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlideIndex
-                ? "bg-gradient-to-tr from-primary to-accent w-8"
-                : "bg-white/30"
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === currentSlideIndex ? "bg-primary w-8" : "bg-white/20"
             }`}
           >
             <span className='sr-only'>go to slide {index + 1}</span>

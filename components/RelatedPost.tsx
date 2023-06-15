@@ -4,25 +4,24 @@ import { type PostWithoutBody } from "@api/contentFetchFunctions";
 
 function RelatedPost({ post }: { post: PostWithoutBody }) {
   return (
-    <div className='group flex items-center gap-4 border rounded-lg p-4'>
-      <div className='relative w-[120px] h-[120px]'>
+    <div className='group flex items-center gap-4 border rounded-lg p-2 lg:p-4'>
+      <div className='relative w-20 aspect-square lg:w-[120px] lg:h-[120px]'>
         <Image
           src={post.bannerUrl}
           alt={post.title}
           placeholder='blur'
           blurDataURL={post.bannerUrl}
           fill
-          className='w-[120px] h-[120px] object-cover rounded-lg'
+          className='w-full h-full object-cover object-center rounded-lg'
         />
       </div>
-      <div className='space-y-4'>
-        <h5 className='group-hover:text-accent transition-colors font-bold text-lg'>
+      <div className='space-y-1'>
+        <h5 className='group-hover:text-accent transition-colors font-bold text-base lg:text-xl'>
           {post.title}
         </h5>
-        <div className='text-sm text-muted uppercase tracking-wider space-x-1'>
-          <span>{post.timeToRead}</span>
-          <span className='text-accent'>&mdash;</span>
+        <div className='text-xs text-muted uppercase tracking-wider space-y-1 flex flex-col'>
           <span>{post.publishedAt}</span>
+          <span>{post.timeToRead}</span>
         </div>
       </div>
     </div>

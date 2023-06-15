@@ -47,7 +47,7 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
           </div>
         </div>
       </div>
-      <div className='bg-background py-20'>
+      <div className='bg-background py-10'>
         <div className='container max-w-site space-y-10'>
           <SectionHeading title='Articles' />
           <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-2'>

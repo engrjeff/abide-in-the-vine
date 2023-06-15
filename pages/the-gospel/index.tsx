@@ -20,6 +20,7 @@ import PostCard from "@components/PostCard";
 import SectionHeading from "@components/SectionHeading";
 import RelatedPost from "@components/RelatedPost";
 import Link from "next/link";
+import ScrollToTopButton from "@components/ScrollToTopButton";
 
 type GospelPageProps = InferGetServerSidePropsType<typeof getStaticProps>;
 
@@ -59,9 +60,11 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
       </div>
       <div className='container max-w-site pt-10'>
         <BackButton backToPath='/blogs' label='back to blogs' />
-        <ShareButtons />
       </div>
-      <article className='prose prose-lg mx-auto px-5 py-10 text-justify font-article dark:prose-invert lg:prose-xl prose-blockquote:border-primary md:px-0 prose-img:rounded-lg'>
+      <article className='prose prose-lg mx-auto px-5 pt-0 lg:pt-10 pb-10 text-justify font-article dark:prose-invert lg:prose-xl prose-blockquote:border-primary md:px-0 prose-img:rounded-lg'>
+        <div className='not-prose'>
+          <ShareButtons />
+        </div>
         <MDXContent components={{ BannerImage }} />
       </article>
       <div className='container mb-20 max-w-site space-y-4 border-t border-gray-200 pt-10 dark:border-slate-700'>
@@ -77,6 +80,7 @@ const TheGospelPage: NextPage<GospelPageProps> = (props) => {
           ))}
         </div>
       </div>
+      <ScrollToTopButton />
     </>
   );
 };

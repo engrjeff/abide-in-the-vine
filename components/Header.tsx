@@ -13,12 +13,6 @@ import ThemeToggle from "./ThemeToggle";
 
 function Header() {
   const [onTop, setOnTop] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    document.body.classList.toggle("overflow-hidden");
-    setMobileMenuOpen((prev) => !prev);
-  };
 
   useEffect(() => {
     const scrollCallback = () => {
@@ -47,12 +41,12 @@ function Header() {
       </div>
       <div
         className={cn(
-          "w-full bg-background transition-transform duration-500 z-[999]",
+          "w-full inset-x-0 bg-background transition-transform duration-500 z-[999]",
           {
-            "fixed -top-20 translate-y-20 border-b": !onTop,
+            "fixed top-0 lg:-top-20 lg:translate-y-20 border-b": !onTop,
           },
           {
-            "border-b md:border-b-0": onTop,
+            "border-b md:border-b-0 fixed lg:static top-0 lg:top-auto": onTop,
           }
         )}
       >
@@ -61,14 +55,7 @@ function Header() {
           <div className='flex gap-3 items-center'>
             <Search />
             <ThemeToggle />
-            <MobileMenuButton
-              isOpen={mobileMenuOpen}
-              onToggle={toggleMobileMenu}
-            />
-            <MobileNav
-              isMenuOpen={mobileMenuOpen}
-              onLinkClick={toggleMobileMenu}
-            />
+            <MobileMenuButton />
           </div>
         </div>
       </div>

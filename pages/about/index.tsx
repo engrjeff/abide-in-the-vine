@@ -18,9 +18,9 @@ const AboutPage: NextPage = () => {
           </div>
         </div>
       </div>
-      <section className='container max-w-site py-10 md:py-20'>
+      <section className='container max-w-prose py-10 md:py-20'>
         <SectionHeading title='About Us' />
-        <div className='prose mx-auto dark:prose-invert lg:prose-lg mt-10'>
+        <article className='prose mx-auto dark:prose-invert lg:prose-lg mt-10'>
           <p>
             Abide in the Vine is a Christ-centered, non-profit ministry located
             in the Philippines. This ministry exists to glorify God by
@@ -37,7 +37,7 @@ const AboutPage: NextPage = () => {
           <p>
             May you be blessed by the posts in this website. Soli Deo Gloria!
           </p>
-        </div>
+        </article>
       </section>
     </>
   );

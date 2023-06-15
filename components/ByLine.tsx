@@ -10,7 +10,7 @@ function ByLine() {
         height={36}
         className='h-9 w-9 rounded-full object-cover'
       />
-      <span className='text-sm text-muted'>By: Jeff Segovia</span>
+      <span className='text-sm text-muted font-sans'>By: Jeff Segovia</span>
     </div>
   );
 }

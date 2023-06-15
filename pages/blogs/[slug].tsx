@@ -61,19 +61,21 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         </div>
       </div>
 
-      <div className='container max-w-site pt-10 space-y-4'>
+      <div className='container max-w-site pt-10 flex'>
         <BackButton backToPath='/blogs' label='back to blogs' />
-        <div className='flex flex-col md:flex-row md:items-center md:gap-4'>
-          <p className='relative inline-block text-xl font-medium'>Tags</p>
-          <span className='text-accent'>&mdash;</span>
-          <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
-            {post.tags.join(" , ")}
-          </span>
-        </div>
-        <ByLine />
-        <ShareButtons />
       </div>
-      <article className='prose w-full prose-lg prose-quoteless mx-auto px-5 py-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-primary md:px-0 md:text-justify'>
+      <article className='prose w-full prose-lg prose-quoteless mx-auto px-5 py-2 lg:py-10 pb-10 font-article dark:prose-invert lg:prose-xl prose-headings:text-left prose-blockquote:border-primary md:px-0 md:text-justify'>
+        <div className='not-prose space-y-2'>
+          <div className='flex items-center gap-4 font-sans'>
+            <p className='relative inline-block text-xl font-medium'>Tags</p>
+            <span className='text-accent'>&mdash;</span>
+            <span className='whitespace-nowrap py-0.5 text-sm font-medium uppercase tracking-wide text-brand-primary'>
+              {post.tags.join(" , ")}
+            </span>
+          </div>
+          <ByLine />
+          <ShareButtons />
+        </div>
         <MDXContent />
       </article>
 
@@ -82,7 +84,7 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
         <p className='text-muted'>
           Love this post? For sure you will love these too:
         </p>
-        <div className='grid gap-8 md:grid-cols-2'>
+        <div className='grid gap-4 lg:gap-8 md:grid-cols-2'>
           {nextPosts.map((nextPost) => (
             <Link key={nextPost._id} href={nextPost.url}>
               <RelatedPost post={nextPost} />
