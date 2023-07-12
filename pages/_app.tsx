@@ -133,9 +133,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             href='/favicon-16x16.png'
           />
           <link rel='manifest' href='/manifest.json' />
-          <meta name='msapplication-TileColor' content='#1c2433' />
+          <meta name='msapplication-TileColor' content='#030711' />
           <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
-          <meta name='theme-color' content='#1c2433' />
+          <meta name='theme-color' content='#030711' />
+          <meta
+            name='p:domain_verify'
+            content='6c88c4cc6a1719b38b0fa8e04987a153'
+          />
         </Head>
         <ArticleScrollIndicator />
         <Header />
