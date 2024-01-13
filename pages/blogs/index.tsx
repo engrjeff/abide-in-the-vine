@@ -1,20 +1,20 @@
-import { NextSeo } from "next-seo";
-import Link from "next/link";
 import type {
-  NextPage,
-  InferGetServerSidePropsType,
   GetServerSideProps,
-} from "next";
+  InferGetServerSidePropsType,
+  NextPage,
+} from 'next';
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 
 import getSortedPosts, {
   getUniqueTagsFromPosts,
   PostWithoutBody,
-} from "@api/contentFetchFunctions";
-import { cn } from "@utils/helpers";
-import { useRouter } from "next/router";
-import BlogCard from "@components/BlogCard";
-import SectionHeading from "@components/SectionHeading";
-import TagClouds from "@components/TagClouds";
+} from '@api/contentFetchFunctions';
+import BlogCard from '@components/BlogCard';
+import SectionHeading from '@components/SectionHeading';
+import TagClouds from '@components/TagClouds';
+import { cn } from '@utils/helpers';
+import { useRouter } from 'next/router';
 
 type BlogsPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -31,42 +31,44 @@ const BlogsPage: NextPage<BlogsPageProps> = ({ posts, tags }) => {
 
   return (
     <>
-      <NextSeo title='Blogs - Abide in the Vine' />
-      <div className='relative'>
-        <div className='h-[300px] w-full bg-blogs bg-cover bg-center bg-no-repeat text-white md:h-[400px]'>
-          <div className='absolute inset-0 flex flex-col justify-center gap-8 bg-black/60 p-6 md:items-center'>
-            <h1 className='text-5xl font-extrabold md:text-6xl'>
+      <NextSeo title="Blogs - Abide in the Vine" />
+      <div className="relative">
+        <div className="h-[300px] w-full bg-blogs bg-cover bg-center bg-no-repeat text-white md:h-[400px]">
+          <div className="absolute inset-0 flex flex-col justify-center gap-8 bg-black/60 p-6 md:items-center">
+            <h1 className="text-5xl font-extrabold md:text-6xl">
               <span>Blogs</span>
             </h1>
-            <p className='text-lg uppercase tracking-wider'>
+            <p className="text-lg uppercase tracking-wider">
               Be delighted in Christ-centered, Spirit-led, God-exalting
               articles.
             </p>
           </div>
         </div>
       </div>
-      <div className='bg-background py-10'>
-        <div className='container max-w-site space-y-10'>
-          <SectionHeading title='Articles' />
-          <div className='grid gap-10 md:grid-cols-2 lg:grid-cols-2'>
+      <div className="bg-background py-10">
+        <div className="container max-w-site space-y-10">
+          <SectionHeading title="Articles" />
+          <ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-2">
             {posts.slice(startIndex, lastIndex).map((post) => (
-              <BlogCard key={post._id} post={post} />
+              <li key={post._id}>
+                <BlogCard post={post} />
+              </li>
             ))}
-          </div>
-          <div className='flex items-center justify-center gap-3'>
+          </ul>
+          <div className="flex items-center justify-center gap-3">
             {Array.from(Array(totalPages).keys()).map((n) => (
               <Link
                 key={`page-${n + 1}`}
                 href={{
-                  pathname: "/blogs",
+                  pathname: '/blogs',
                   query: {
                     page: n + 1,
                   },
                 }}
                 className={cn(
-                  "rounded h-9 w-9 border flex items-center justify-center hover:bg-primary hover:border-primary",
+                  'rounded h-9 w-9 border flex items-center justify-center hover:bg-primary hover:border-primary',
                   {
-                    "bg-primary text-white":
+                    'bg-primary text-white':
                       (!router.query.page && n === 0) ||
                       router.query.page === String(n + 1),
                   }
