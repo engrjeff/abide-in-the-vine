@@ -1,7 +1,8 @@
-import type { Post } from '@contentlayer/generated';
+import { allPosts, type Post } from '@contentlayer/generated';
 import type {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
   NextPage,
 } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -20,7 +21,7 @@ import ShareButtons from '@components/ShareButtons';
 import { abide } from '@utils/constants';
 import Link from 'next/link';
 
-type BlogPostProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+type BlogPostProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   const MDXContent = useMDXComponent(post.body.code);
@@ -95,13 +96,20 @@ const BlogPost: NextPage<BlogPostProps> = ({ post, nextPosts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: allPosts.map((post) => ({ params: { slug: post.slug } })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<{
   post: Post;
   nextPosts: PostWithoutBody[];
-}> = async (context) => {
+}> = (context) => {
   const { slug } = context.params as { slug: string };
 
-  const currentPost = await getPostBySlug(slug);
+  const currentPost = getPostBySlug(slug);
 
   if (!currentPost) {
     return {
@@ -109,7 +117,7 @@ export const getServerSideProps: GetServerSideProps<{
     };
   }
 
-  const posts = await getSortedPosts();
+  const posts = getSortedPosts();
   const nextPosts = posts.filter((p) => p.slug !== slug);
 
   // shuffle the posts and get 3 posts only

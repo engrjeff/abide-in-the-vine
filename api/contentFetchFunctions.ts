@@ -1,13 +1,8 @@
-import {
-  type Post,
-  allPosts,
-  type Gospel,
-  allGospels,
-} from "@contentlayer/generated";
-import { formatDate } from "@utils/helpers";
-import { compareDesc } from "date-fns";
+import { allGospels, allPosts, type Post } from '@contentlayer/generated';
+import { formatDate } from '@utils/helpers';
+import { compareDesc } from 'date-fns';
 
-export type PostWithoutBody = Omit<Post, "body">;
+export type PostWithoutBody = Omit<Post, 'body'>;
 
 /**
  *
@@ -24,7 +19,7 @@ export default function getSortedPosts(
       return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
     })
     .slice(start, n ? n : allPosts.length)
-    .map<Omit<Post, "body">>((post) => ({
+    .map<Omit<Post, 'body'>>((post) => ({
       _id: post._id,
       _raw: post._raw,
       bannerUrl: post.bannerUrl,
@@ -51,13 +46,13 @@ export function getAllTags() {
   return tags;
 }
 
-export async function getPostBySlug(slug: string) {
-  const post = await allPosts.find((p) => p.slug === slug);
+export function getPostBySlug(slug: string) {
+  const post = allPosts.find((p) => p.slug === slug);
   return post;
 }
 
 export function getGospelPosts() {
-  const posts = getSortedPosts().filter((post) => post.tags.includes("gospel"));
+  const posts = getSortedPosts().filter((post) => post.tags.includes('gospel'));
 
   return posts;
 }
