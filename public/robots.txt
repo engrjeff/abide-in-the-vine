@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://abideinthevineph.org
+
+# Sitemaps
+Sitemap: https://abideinthevineph.org/sitemap.xml
